@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Menu} from 'antd';
+import { Link } from "react-router-dom";
 import './SiderMenu.css'
 
 const { Title } = Typography;
@@ -15,13 +16,13 @@ class SiderMenu extends React.Component {
                 
                 <Menu theme="dark" defaultSelectedKeys={['1']} defaultOpenKeys={['1']}>
                     <Menu.Item key="1">
-                        Dashboard
+                        <Link to="/">Dashboard</Link>
                     </Menu.Item>
                     <Menu.Item key="2">
-                        Customers
+                    <Link to="/customer">Customers</Link>
                     </Menu.Item>
                     <Menu.Item key="3">
-                        Projects
+                    <Link to="/project">Projects</Link>
                     </Menu.Item>
                 </Menu>
 
