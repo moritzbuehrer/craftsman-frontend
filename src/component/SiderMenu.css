@@ -1,0 +1,9 @@
+.sider-header-logo{
+    width: 100%;
+    height: 64px;
+    text-align: center;
+}
+#sider-header-title{
+    color: white;
+    line-height: 64px;
+}

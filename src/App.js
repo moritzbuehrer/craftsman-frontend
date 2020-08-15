@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Layout } from 'antd';
+import SiderMenu from './component/SiderMenu';
+import AppHeader from './component/AppHeader';
+
+import 'antd/dist/antd.css';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const { Header, Footer, Sider, Content } = Layout;
+
+class App extends React.Component {
+
+  render() {
+    return (
+      <Layout>
+        <Sider className="sider">
+          <SiderMenu />
+        </Sider>
+        <Layout>
+          <Header className="header">
+            <AppHeader/>
+          </Header>
+          <Content className="content">
+            CONTENT
+          </Content>
+          <Footer className="footer">
+            Craftsman @ 2020 Created by BuehrerDueck
+          </Footer>
+        </Layout>
+      </Layout>
+    );
+  }
 }
 
 export default App;
