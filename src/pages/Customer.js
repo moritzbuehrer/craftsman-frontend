@@ -1,8 +1,5 @@
 import React from 'react';
-import { Row, Col, Input, List, Avatar, Divider } from 'antd';
-
-const { Search } = Input;
-
+import { Row, Col, Input, List } from 'antd';
 
 const data = [
     'Moritz Bührer',
