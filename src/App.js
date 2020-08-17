@@ -5,11 +5,13 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from './store';
 
-import SiderMenu from './component/SiderMenu';
-import AppHeader from './component/AppHeader';
-import Customer from './page/Customer';
-import Project from './page/Project';
+import SiderMenu from './components/SiderMenu';
+import AppHeader from './components/AppHeader';
+import Customer from './pages/Customer';
+import Project from './pages/Project';
 
 import 'antd/dist/antd.css';
 import './App.css';
@@ -20,38 +22,40 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <Layout>
-          <Sider className="sider">
-            <SiderMenu />
-          </Sider>
+      <Provider store={store}>
+        <Router>
           <Layout>
-            <Header className="header">
-              <AppHeader />
-            </Header>
+            <Sider className="sider">
+              <SiderMenu />
+            </Sider>
+            <Layout>
+              <Header className="header">
+                <AppHeader />
+              </Header>
 
-            <Content className="content">
+              <Content className="content">
 
-              <Switch>
-                <Route exact path="/">
+                <Switch>
+                  <Route exact path="/">
 
-                </Route>
-                <Route path="/customer">
-                  <Customer />
-                </Route>
-                <Route path="/project">
-                  <Project/>
-                </Route>
-              </Switch>
+                  </Route>
+                  <Route path="/customer">
+                    <Customer />
+                  </Route>
+                  <Route path="/project">
+                    <Project />
+                  </Route>
+                </Switch>
 
-            </Content>
+              </Content>
 
-            <Footer className="footer">
-              Craftsman @ 2020 Created by BuehrerDueck
+              <Footer className="footer">
+                Craftsman @ 2020 Created by BuehrerDueck
           </Footer>
+            </Layout>
           </Layout>
-        </Layout>
-      </Router>
+        </Router>
+      </Provider>
     );
   }
 }
