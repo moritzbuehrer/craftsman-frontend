@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Menu} from 'antd';
+import { Typography, Menu } from 'antd';
 import { Link } from "react-router-dom";
 import './SiderMenu.css'
 
@@ -11,21 +11,23 @@ class SiderMenu extends React.Component {
         return (
             <div className="sider-menu">
                 <div className="sider-header-logo">
-                    <Title id="sider-header-title" level={2}>Craftsman</Title>
+                    <Link to="/">
+                        <Title id="sider-header-title" level={2}>Craftsman</Title>
+                    </Link>
                 </div>
-                
+
                 <Menu theme="dark" defaultSelectedKeys={['1']} defaultOpenKeys={['1']}>
                     <Menu.Item key="1">
                         <Link to="/">Dashboard</Link>
                     </Menu.Item>
                     <Menu.Item key="2">
-                    <Link to="/customer">Customers</Link>
+                        <Link to="/customer">Customers</Link>
                     </Menu.Item>
                     <Menu.Item key="3">
-                    <Link to="/project">Projects</Link>
+                        <Link to="/project">Projects</Link>
                     </Menu.Item>
                     <Menu.Item key="4">
-                    <Link to="/employee">Employees</Link>
+                        <Link to="/employee">Employees</Link>
                     </Menu.Item>
                 </Menu>
 

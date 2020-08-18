@@ -1,6 +1,5 @@
 
 import { FETCH_CUSTOMERS_START, FETCH_CUSTOMERS_SUCCESS, FETCH_CUSTOMERS_ERROR, SET_CURRENT_CUSTOMER, TOGGLE_CUSTOMER_CHANGE } from './../constants/actionTypes';
-import customer from './../reducers/customer';
 
 export function toggleCustomerChange() {
     return {

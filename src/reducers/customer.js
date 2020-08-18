@@ -37,6 +37,7 @@ function customer(state = initialState, action) {
             return {
                 ...state,
                 currentCustomer: {
+                    id: action.customer.id,
                     firstName: action.customer.firstName,
                     lastName: action.customer.name,
                     phoneNumber: action.customer.phoneNumber,

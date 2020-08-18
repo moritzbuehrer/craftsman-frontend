@@ -1,28 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Input, List, Button, Spin, Avatar, Typography } from 'antd';
-import { fetchCustomers, setCurrentCustomer, toggleCustomerChange } from './../actions/customer';
+import { Row, Col, Input, List, Button, Spin, Typography } from 'antd';
+import { fetchCustomers, setCurrentCustomer, toggleCustomerChange } from '../../actions/customer';
 
 import './Customer.css';
 
 import { LoadingOutlined } from '@ant-design/icons';
 const { Text } = Typography;
 
-const data = [
-    'Moritz Bührer',
-    'Tamara Schmid',
-    'Mara Bührer',
-    'Hilka Bührer',
-    'Michael Bührer',
-    'Moritz Bührer',
-    'Tamara Schmid',
-    'Mara Bührer',
-    'Hilka Bührer'
-];
-
-
 const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin />;
-
 
 class Customer extends React.Component {
 
@@ -58,7 +44,7 @@ class Customer extends React.Component {
 
                     </Col>
                     <Col span={18}>
-                        <Row>
+                        <Row style={{ margin: '24px' }}>
                             <Col span={12}>
                                 <Button onClick={() => this.onChangButtonClick()}>Change</Button>
                                 <Button>Delete</Button>
@@ -68,22 +54,26 @@ class Customer extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col span={24}>
+                            <Col span={24} style={{ margin: '24px' }}>
                                 <Row>
-                                    <Text strong>First Name:</Text> 
-                                    {this.props.changeMode ? <Input value={this.props.currentCustomer.firstName}/> : this.props.currentCustomer.firstName}
+                                    <Text strong>Customer Id:</Text>
+                                    {this.props.currentCustomer.id}
                                 </Row>
                                 <Row>
-                                    <Text strong>Last Name:</Text> 
-                                    {this.props.changeMode ?  <Input value={this.props.currentCustomer.lastName}/> : this.props.currentCustomer.lastName}
+                                    <Text strong>First Name:</Text>
+                                    {this.props.changeMode ? <Input defaultValue={this.props.currentCustomer.firstName} /> : this.props.currentCustomer.firstName}
                                 </Row>
                                 <Row>
-                                    <Text strong>Phone Number:</Text> 
-                                    {this.props.changeMode ?  <Input value={this.props.currentCustomer.phoneNumber}/> : this.props.currentCustomer.phoneNumber}
+                                    <Text strong>Last Name:</Text>
+                                    {this.props.changeMode ? <Input defaultValue={this.props.currentCustomer.lastName} /> : this.props.currentCustomer.lastName}
                                 </Row>
                                 <Row>
-                                    <Text strong>Email:</Text> 
-                                    {this.props.changeMode ? <Input value={this.props.currentCustomer.email}/> : this.props.currentCustomer.email}
+                                    <Text strong>Phone Number:</Text>
+                                    {this.props.changeMode ? <Input defaultValue={this.props.currentCustomer.phoneNumber} /> : this.props.currentCustomer.phoneNumber}
+                                </Row>
+                                <Row>
+                                    <Text strong>Email:</Text>
+                                    {this.props.changeMode ? <Input defaultValue={this.props.currentCustomer.email} /> : this.props.currentCustomer.email}
                                 </Row>
 
                             </Col>
