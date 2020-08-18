@@ -1,20 +1,34 @@
 
-import { FETCH_CUSTOMERS_LOADING, FETCH_CUSTOMERS_SUCCESS, FETCH_CUSTOMERS_ERROR } from './../constants/actionTypes';
+import { FETCH_CUSTOMERS_START, FETCH_CUSTOMERS_SUCCESS, FETCH_CUSTOMERS_ERROR, SET_CURRENT_CUSTOMER, TOGGLE_CUSTOMER_CHANGE } from './../constants/actionTypes';
+import customer from './../reducers/customer';
 
-export function fetchCustomersLoading(payload) {
+export function toggleCustomerChange() {
     return {
-        type: FETCH_CUSTOMERS_LOADING
+        type: TOGGLE_CUSTOMER_CHANGE
     }
 };
 
-export function fetchCustomersSuccess(customers) {
+export function setCurrentCustomer(customer) {
+    return {
+        type: SET_CURRENT_CUSTOMER,
+        customer: customer
+    }
+};
+
+function fetchCustomersLoading(payload) {
+    return {
+        type: FETCH_CUSTOMERS_START
+    }
+};
+
+function fetchCustomersSuccess(customers) {
     return {
         type: FETCH_CUSTOMERS_SUCCESS,
         customers: customers
     }
 };
 
-export function fetchCustomersError(error) {
+function fetchCustomersError(error) {
     return {
         type: FETCH_CUSTOMERS_ERROR,
         error: error
@@ -22,17 +36,25 @@ export function fetchCustomersError(error) {
 };
 
 export function fetchCustomers() {
-    return dispatch => {
-        console.log("fetch")
+    return (dispatch) => {
         dispatch(fetchCustomersLoading());
-        fetch('https://exampleapi.com/products')
+        fetch('http://localhost:8080/customer')
             .then(res => res.json())
             .then(res => {
-                if (res.error) {
-                    throw (res.error);
-                }
-                dispatch(fetchCustomersSuccess(res.products));
-                return res.products;
+
+                var customers = [];
+
+                res.forEach(function (customer, index) {
+                    customers.push({
+                        id: customer.id,
+                        name: customer.name,
+                        firstName: customer.firstName,
+                        phoneNumber: customer.phoneNumber,
+                        email: customer.email
+                    });
+                });
+
+                dispatch(fetchCustomersSuccess(customers));
             })
             .catch(error => {
                 dispatch(fetchCustomersError(error));

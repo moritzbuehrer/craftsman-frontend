@@ -4,15 +4,11 @@ import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs } from
 import projectImage from './../images/project_image.jpg';
 
 import './Project.css'
-import { fetchCustomers, fetchCustomersLoading, fetchCustomersError } from './../actions/customer';
+import ProjectGeneralInfo from '../components/ProjectGeneralInfo';
 
 const { TabPane } = Tabs;
 
 class Project extends React.Component {
-
-    componentDidMount() {
-        fetchCustomers();
-    }
 
     render() {
         return (
@@ -24,7 +20,7 @@ class Project extends React.Component {
                     subTitle="2020-03-0001"
                     extra={
                         <Button type="primary">
-                            Add Work
+                            Add Workin Hours
                         </Button>
                     }
                 >
@@ -48,7 +44,7 @@ class Project extends React.Component {
 
                 <Tabs defaultActiveKey="1">
                     <TabPane tab="General Information" key="1">
-                        Content of Tab Pane 1
+                        <ProjectGeneralInfo/>
                 </TabPane>
                     <TabPane tab="Working hours" key="2">
                         Content of Tab Pane 2

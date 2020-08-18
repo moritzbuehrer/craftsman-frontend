@@ -24,6 +24,9 @@ class SiderMenu extends React.Component {
                     <Menu.Item key="3">
                     <Link to="/project">Projects</Link>
                     </Menu.Item>
+                    <Menu.Item key="4">
+                    <Link to="/employee">Employees</Link>
+                    </Menu.Item>
                 </Menu>
 
             </div>
