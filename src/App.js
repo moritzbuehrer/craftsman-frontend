@@ -11,7 +11,7 @@ import store from './store';
 import SiderMenu from './components/SiderMenu';
 import AppHeader from './components/AppHeader';
 import Customer from './pages/Customer/Customer';
-import Project from './pages/Project';
+import Project from './pages/Project/Project';
 import Dashboard from './pages/Dashboard';
 
 import 'antd/dist/antd.css';
