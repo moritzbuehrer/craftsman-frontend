@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/%7Bcraftsman-frontend%7D/static/css/main.0cf45641.chunk.css",
+    "main.js": "/%7Bcraftsman-frontend%7D/static/js/main.10d4ae32.chunk.js",
+    "main.js.map": "/%7Bcraftsman-frontend%7D/static/js/main.10d4ae32.chunk.js.map",
+    "runtime-main.js": "/%7Bcraftsman-frontend%7D/static/js/runtime-main.996e5889.js",
+    "runtime-main.js.map": "/%7Bcraftsman-frontend%7D/static/js/runtime-main.996e5889.js.map",
+    "static/css/2.04ff9426.chunk.css": "/%7Bcraftsman-frontend%7D/static/css/2.04ff9426.chunk.css",
+    "static/js/2.3aaf0ec3.chunk.js": "/%7Bcraftsman-frontend%7D/static/js/2.3aaf0ec3.chunk.js",
+    "static/js/2.3aaf0ec3.chunk.js.map": "/%7Bcraftsman-frontend%7D/static/js/2.3aaf0ec3.chunk.js.map",
+    "index.html": "/%7Bcraftsman-frontend%7D/index.html",
+    "precache-manifest.08fe3b06818d72b6a487716afe26749a.js": "/%7Bcraftsman-frontend%7D/precache-manifest.08fe3b06818d72b6a487716afe26749a.js",
+    "service-worker.js": "/%7Bcraftsman-frontend%7D/service-worker.js",
+    "static/css/2.04ff9426.chunk.css.map": "/%7Bcraftsman-frontend%7D/static/css/2.04ff9426.chunk.css.map",
+    "static/css/main.0cf45641.chunk.css.map": "/%7Bcraftsman-frontend%7D/static/css/main.0cf45641.chunk.css.map",
+    "static/js/2.3aaf0ec3.chunk.js.LICENSE.txt": "/%7Bcraftsman-frontend%7D/static/js/2.3aaf0ec3.chunk.js.LICENSE.txt",
+    "static/media/project_image.jpg": "/%7Bcraftsman-frontend%7D/static/media/project_image.9d8a7c9c.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.996e5889.js",
+    "static/css/2.04ff9426.chunk.css",
+    "static/js/2.3aaf0ec3.chunk.js",
+    "static/css/main.0cf45641.chunk.css",
+    "static/js/main.10d4ae32.chunk.js"
+  ]
+}
