@@ -1,14 +1,57 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Input, List, Button, Spin, Typography } from 'antd';
+import { Row, Col, Input, List, Button, Spin, Typography, Tabs, Table } from 'antd';
 import { fetchCustomers, setCurrentCustomer, toggleCustomerChange } from '../../actions/customer';
 
 import './Customer.css';
 
 import { LoadingOutlined } from '@ant-design/icons';
 const { Text } = Typography;
+const { TabPane } = Tabs;
 
 const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin />;
+
+
+const columns = [
+    {
+        title: 'Project Name',
+        dataIndex: 'name',
+        key: 'name',
+        render: text => <a>{text}</a>,
+    },
+    {
+        title: 'Description',
+        dataIndex: 'age',
+        key: 'age',
+    },
+    {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+    }
+];
+
+const data = [
+    {
+        key: '1',
+        name: 'Project 1',
+        age: 32,
+        address: 'New York No. 1 Lake Park'
+    },
+    {
+        key: '2',
+        name: 'Project 2',
+        age: 42,
+        address: 'London No. 1 Lake Park'
+    },
+    {
+        key: '3',
+        name: 'Project 4',
+        age: 32,
+        address: 'Sidney No. 1 Lake Park'
+    },
+];
+
 
 class Customer extends React.Component {
 
@@ -73,8 +116,8 @@ class Customer extends React.Component {
                                 <Button type="primary" style={{ float: "right" }}>Add new Customer</Button>
                             </Col>
                         </Row>
-                        <Row>
-                            <Col span={24} style={{ margin: '0px 0px 0px 20px' }}>
+                        <Row style={{ margin: '0px 0px 0px 20px' }}>
+                            <Col span={24} >
                                 <Row>
                                     <Text strong>Customer Id:</Text>
                                     {this.props.currentCustomer.id}
@@ -98,7 +141,24 @@ class Customer extends React.Component {
 
                             </Col>
                         </Row>
+                        <Row style={{ margin: '0px 0px 0px 20px' }}>
+                            <Col span={24} >
+                                <Tabs defaultActiveKey="1">
+                                    <TabPane tab="Open Projects" key="1">
+                                        <Table columns={columns} dataSource={data} />
+                                    </TabPane>
+                                    <TabPane tab="More Info" key="2">
 
+                                    </TabPane>
+                                    <TabPane tab="More Info" key="3">
+
+                                    </TabPane>
+                                    <TabPane tab="More Info" key="4">
+
+                                    </TabPane>
+                                </Tabs>
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
             </div>
