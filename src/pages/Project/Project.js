@@ -159,7 +159,7 @@ class Project extends React.Component {
                             </Descriptions>
                         </Col>
                         <Col span={4}>
-                            <Statistic title="Total working hours" suffix="h" value={330} />
+                            <Statistic title="Total working hours" suffix="h" value={this.props.currentProject.totalWorkingHours} />
                         </Col>
                     </Row>
                 </PageHeader>
