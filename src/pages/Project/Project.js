@@ -37,7 +37,7 @@ const options = [
     { value: 'John Doe' },
     { value: 'Max Mustermann' },
     { value: 'Test User1' },
-  ];
+];
 
 const layout = {
     labelCol: { span: 6 },
@@ -78,6 +78,14 @@ class Project extends React.Component {
             visible: false,
         });
     };
+
+    aggregateTotalWorkingHours = () => {
+
+        let timeTracks = this.props.currentProject.timeTracks;
+        console.log(timeTracks)
+
+    }
+
 
     render() {
         return (
@@ -142,7 +150,7 @@ class Project extends React.Component {
                     subTitle={this.props.currentProject.id}
                     extra={
                         <Button type="primary" onClick={() => this.showModal()}>
-                            Add Workin Hours
+                            Arbeitszeit erfassen
                         </Button>
                     }
                 >
@@ -165,16 +173,22 @@ class Project extends React.Component {
                 </PageHeader>
 
                 <Tabs defaultActiveKey="1">
-                    <TabPane tab="General Information" key="1">
+                    <TabPane tab="Allgemeine Informationen" key="1">
                         <ProjectGeneralInfo />
                     </TabPane>
-                    <TabPane tab="Working hours" key="2">
+                    <TabPane tab="Verantwortliche Mitarbeiter" key="2">
+                        
+                    </TabPane>
+                    <TabPane tab="Zeiterfassung" key="3">
                         <Table columns={columns} dataSource={this.props.currentProject.timeTracks} />
                     </TabPane>
-                    <TabPane tab="Images" key="3">
+                    <TabPane tab="Bilder" key="4">
                         <ProjectImages />
                     </TabPane>
-                    <TabPane tab="Notes" key="4">
+                    <TabPane tab="Geräte" key="5">
+                        
+                    </TabPane>
+                    <TabPane tab="Notizen" key="6">
                         <TextArea rows={4} />
                     </TabPane>
                 </Tabs>
