@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs, Input, Table, Modal, Form } from 'antd';
+import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs, Input, Table, Modal, Form, InputNumber } from 'antd';
 import { connect } from 'react-redux';
 import projectImage from '../../images/project_image.jpg';
 
@@ -57,7 +57,7 @@ class Project extends React.Component {
         var timeTrack = {
             id: "",
             employee: formValues.employee,
-            workingTime: formValues.workingTime,
+            workingTime: formValues.Duration,
             note: formValues.note
         }
         this.props.dispatch(setWorkingTime(timeTrack))
@@ -100,10 +100,10 @@ class Project extends React.Component {
 
                         <Form.Item
                             label="Duration"
-                            name="workingTime"
-                            rules={[{ required: true, message: 'Please set Working Time duration' }]}
+                            name="Duration"
+                            rules={[{ required: true, message: 'Please set Working Time duration' }, { type: 'number' }]}
                         >
-                            <Input />
+                            <InputNumber min={0} />
                         </Form.Item>
 
                         <Form.Item
