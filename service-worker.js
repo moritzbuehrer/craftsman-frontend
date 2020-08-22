@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/craftsman-frontend/precache-manifest.2ecb56b65187b3ec8e8883e3763f8308.js"
+  "/craftsman-frontend/precache-manifest.a41435a179753f2b7ea78d480cb0bc6c.js"
 );
 
 self.addEventListener('message', (event) => {
