@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs, Input, Table, Modal, Form, InputNumber } from 'antd';
+import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs, Input, Table, Modal, Form, InputNumber, AutoComplete } from 'antd';
 import { connect } from 'react-redux';
 import projectImage from '../../images/project_image.jpg';
 
@@ -32,6 +32,12 @@ const columns = [
         key: 'note',
     }
 ];
+
+const options = [
+    { value: 'John Doe' },
+    { value: 'Max Mustermann' },
+    { value: 'Test User1' },
+  ];
 
 const layout = {
     labelCol: { span: 6 },
@@ -95,7 +101,13 @@ class Project extends React.Component {
                             name="employee"
                             rules={[{ required: true, message: 'Please specify Employee name' }]}
                         >
-                            <Input />
+                            <AutoComplete
+                                options={options}
+                                placeholder="Search for employee"
+                                filterOption={(inputValue, option) =>
+                                    option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                }
+                            />
                         </Form.Item>
 
                         <Form.Item
