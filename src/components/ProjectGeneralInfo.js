@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Typography, Divider, Row, Col } from 'antd';
 
 const { Title, Text } = Typography;
@@ -9,26 +10,26 @@ class ProjectGeneralInfo extends React.Component {
     render() {
         return (
             <div >
-                <Title level={2}>Kernsanierung</Title>
+                <Title level={2}>{this.props.currentProject.name}</Title>
 
                 <Row>
                     <Col span={3}>
                         <Text strong>Project Id:</Text>
                     </Col>
                     <Col span={21}>
-                        123456789
+                        {this.props.currentProject.id}
                     </Col>
                     <Col span={3}>
                         <Text strong>External Project Id:</Text>
                     </Col>
                     <Col span={21}>
-                        987654321
+                    {this.props.currentProject.externalId}
                     </Col>
                     <Col span={3}>
                         <Text strong>Description:</Text>
                     </Col>
                     <Col span={21}>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    {this.props.currentProject.description}
                     </Col>
                 </Row>
 
@@ -39,4 +40,8 @@ class ProjectGeneralInfo extends React.Component {
     }
 }
 
-export default ProjectGeneralInfo;
+const mapStateToProps = (state) => ({
+    currentProject: state.project.currentProject
+});
+
+export default connect(mapStateToProps, null)(ProjectGeneralInfo);
