@@ -53,6 +53,11 @@ class Project extends React.Component {
 
     state = { visible: false };
 
+    componentDidMount() {
+        let projectId = this.props.match.params.id;
+        // Redux set current Project values right
+    }
+
     showModal = () => {
         this.setState({
             visible: true,
@@ -78,14 +83,6 @@ class Project extends React.Component {
             visible: false,
         });
     };
-
-    aggregateTotalWorkingHours = () => {
-
-        let timeTracks = this.props.currentProject.timeTracks;
-        console.log(timeTracks)
-
-    }
-
 
     render() {
         return (
@@ -153,6 +150,7 @@ class Project extends React.Component {
                             Arbeitszeit erfassen
                         </Button>
                     }
+                    style={{ padding: '16px 0px' }}
                 >
 
                     <Row>
@@ -161,9 +159,10 @@ class Project extends React.Component {
                         </Col>
                         <Col span={16}>
                             <Descriptions size="small" column={3}>
-                                <Descriptions.Item label="Contact Person">Marc-Robin Dück</Descriptions.Item>
-                                <Descriptions.Item label="Start Date">2017-01-10</Descriptions.Item>
-                                <Descriptions.Item label="Effective Time">2017-10-10</Descriptions.Item>
+                                <Descriptions.Item label="Kontaktperson">Marc-Robin Dück</Descriptions.Item>
+                                <Descriptions.Item label="Geplantes Start Datum">2017-01-10</Descriptions.Item>
+                                <Descriptions.Item label="Effektives Start Datum">2017-10-10</Descriptions.Item>
+                                <Descriptions.Item label="Telefonnummer">004919879327498</Descriptions.Item>
                             </Descriptions>
                         </Col>
                         <Col span={4}>

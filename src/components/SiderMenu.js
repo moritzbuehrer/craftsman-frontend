@@ -21,13 +21,13 @@ class SiderMenu extends React.Component {
                         <Link to="/">Dashboard</Link>
                     </Menu.Item>
                     <Menu.Item key="2">
-                        <Link to="/customer">Customers</Link>
+                        <Link to="/customer">Kunden</Link>
                     </Menu.Item>
                     <Menu.Item key="3">
-                        <Link to="/project">Projects</Link>
+                        <Link to="/project">Projekte</Link>
                     </Menu.Item>
                     <Menu.Item key="4">
-                        <Link to="/employee">Employees</Link>
+                        <Link to="/employee">Mitarbeiter</Link>
                     </Menu.Item>
                 </Menu>
 

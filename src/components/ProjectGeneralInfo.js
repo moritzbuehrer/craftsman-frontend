@@ -33,8 +33,6 @@ class ProjectGeneralInfo extends React.Component {
                     </Col>
                 </Row>
 
-                <Divider orientation="left">Further Details</Divider>
-
             </div>
         );
     }

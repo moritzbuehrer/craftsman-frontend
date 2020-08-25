@@ -10,7 +10,29 @@ const initialState = {
         totalWorkingHours: 0,
         timeTracks: []
     },
-    projects: [],
+    projects: [
+        {
+            id: '1',
+            name: 'Project 1',
+            age: 'Test GmbH',
+            address: 'New York No. 1 Lake Park',
+            status: 'In Progress'
+        },
+        {
+            id: '2',
+            name: 'Project 2',
+            age: 'Test GmbH',
+            address: 'London No. 1 Lake Park',
+            status: 'In Progress'
+        },
+        {
+            id: '3',
+            name: 'Project 4',
+            age: 'Test GmbH',
+            address: 'Sidney No. 1 Lake Park',
+            status: 'In Progress'
+        }
+    ],
     loading: false,
     error: null
 };
@@ -18,7 +40,7 @@ const initialState = {
 function project(state = initialState, action) {
 
     switch (action.type) {
-        
+
         case SET_PROJECT_WORKING_TIME:
             return {
                 ...state,

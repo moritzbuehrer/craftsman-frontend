@@ -3,10 +3,51 @@ import { FETCH_CUSTOMERS_START, FETCH_CUSTOMERS_SUCCESS, FETCH_CUSTOMERS_ERROR, 
 
 const initialState = {
     currentCustomer: {
-        firstName: "",
-        lastName: ""
+        id: '1',
+        name: 'Bau GmbH',
+        firstName: '',
+        phone: '018863648176',
+        email: 'test@web.de',
+        street: 'Test Ave. 8',
+        postcode: '87967',
+        city: 'Hamburg',
+        country: 'DE'
     },
-    customers: [],
+    customers: [
+        {
+            id: '1',
+            name: 'Bau GmbH',
+            firstName: '',
+            phone: '018863648176',
+            email: 'test@web.de',
+            street: 'Test Ave. 8',
+            postcode: '87967',
+            city: 'Hamburg',
+            country: 'DE'
+        },
+        {
+            id: '2',
+            name: 'Maler GmbH',
+            firstName: '',
+            phone: '018863648176',
+            email: 'test@web.de',
+            street: 'Berlin Ave. 8',
+            postcode: '87967',
+            city: 'Berlin',
+            country: 'DE'
+        },
+        {
+            id: '3',
+            name: 'Müller',
+            firstName: 'Thomas',
+            phone: '018863648176',
+            email: 'test@web.de',
+            street: 'Freibrug Ave. 8',
+            postcode: '87967',
+            city: 'Freibrug',
+            country: 'DE'
+        }
+    ],
     loading: false,
     error: null,
     changeMode: false

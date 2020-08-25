@@ -12,10 +12,12 @@ import SiderMenu from './components/SiderMenu';
 import AppHeader from './components/AppHeader';
 import Customer from './pages/Customer/Customer';
 import Project from './pages/Project/Project';
+import ProjectList from './pages/Project/ProjectList';
 import Dashboard from './pages/Dashboard';
 
 import 'antd/dist/antd.css';
 import './App.css';
+import CustomerList from './pages/Customer/CustomerList';
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -41,12 +43,10 @@ class App extends React.Component {
                   <Route exact path="/">
                     <Dashboard />
                   </Route>
-                  <Route path="/customer">
-                    <Customer />
-                  </Route>
-                  <Route path="/project">
-                    <Project />
-                  </Route>
+                  <Route exact path="/customer" component={CustomerList}/>
+                  <Route exact path="/customer/:id" component={Customer}/>
+                  <Route exact path="/project" component={ProjectList}/>
+                  <Route exact path="/project/:id" component={Project}/>
                 </Switch>
 
               </Content>
