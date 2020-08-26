@@ -1,16 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Input, List, Button, Spin, Typography, Tabs, Table, PageHeader, Descriptions } from 'antd';
+import { Tabs, Table, PageHeader, Descriptions } from 'antd';
 import { fetchCustomers, setCurrentCustomer, toggleCustomerChange } from '../../actions/customer';
 
 import './Customer.css';
+import CustomerGeneralInfo from './../../components/CustomerGeneralInfo.js/CustomerGeneralInfo';
 
-import { LoadingOutlined } from '@ant-design/icons';
-import customer from './../../reducers/customer';
-const { Text } = Typography;
 const { TabPane } = Tabs;
-
-const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin />;
 
 
 const columns = [
@@ -64,32 +60,22 @@ class Customer extends React.Component {
         this.props.dispatch(toggleCustomerChange());
     }
 
-    componentDidMount() {
-        this.props.dispatch(fetchCustomers());
-    }
+
 
     render() {
         return (
             <div>
                 <PageHeader
                     onBack={() => window.history.back()}
-                    title="Test GmbH"
-                    subTitle="398276"
+                    title={this.props.customer.name}
+                    subTitle={this.props.customer.id}
                     style={{ padding: '16px 0px' }}
                 >
-
-                    <Descriptions size="small" column={3}>
-                        <Descriptions.Item label="Name">{this.props.customer.name}</Descriptions.Item>
-                        {this.props.customer.firstName ? <Descriptions.Item label="Vorname">{this.props.customer.firstName}</Descriptions.Item> : null}
-                        <Descriptions.Item label="Telefonnummer">{this.props.customer.phone}</Descriptions.Item>
-                        <Descriptions.Item label="Email">{this.props.customer.email}</Descriptions.Item>
-                    </Descriptions>
-
                 </PageHeader>
 
                 <Tabs defaultActiveKey="1">
                     <TabPane tab="Allgemeine Informationen" key="1">
-
+                        <CustomerGeneralInfo/>
                     </TabPane>
                     <TabPane tab="Offene Projekte" key="2">
                         <Table columns={columns} dataSource={data} />
