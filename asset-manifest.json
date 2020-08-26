@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/craftsman-frontend/static/css/main.0cf45641.chunk.css",
-    "main.js": "/craftsman-frontend/static/js/main.62898ef4.chunk.js",
-    "main.js.map": "/craftsman-frontend/static/js/main.62898ef4.chunk.js.map",
+    "main.js": "/craftsman-frontend/static/js/main.853ee2d3.chunk.js",
+    "main.js.map": "/craftsman-frontend/static/js/main.853ee2d3.chunk.js.map",
     "runtime-main.js": "/craftsman-frontend/static/js/runtime-main.f7bade5d.js",
     "runtime-main.js.map": "/craftsman-frontend/static/js/runtime-main.f7bade5d.js.map",
     "static/css/2.04ff9426.chunk.css": "/craftsman-frontend/static/css/2.04ff9426.chunk.css",
-    "static/js/2.22f9ca7c.chunk.js": "/craftsman-frontend/static/js/2.22f9ca7c.chunk.js",
-    "static/js/2.22f9ca7c.chunk.js.map": "/craftsman-frontend/static/js/2.22f9ca7c.chunk.js.map",
+    "static/js/2.6556aebd.chunk.js": "/craftsman-frontend/static/js/2.6556aebd.chunk.js",
+    "static/js/2.6556aebd.chunk.js.map": "/craftsman-frontend/static/js/2.6556aebd.chunk.js.map",
     "index.html": "/craftsman-frontend/index.html",
-    "precache-manifest.4d5051e0628f6a7b90e1fe3f2d967d63.js": "/craftsman-frontend/precache-manifest.4d5051e0628f6a7b90e1fe3f2d967d63.js",
+    "precache-manifest.8ebc1dab6835cf8460db7dfece638e66.js": "/craftsman-frontend/precache-manifest.8ebc1dab6835cf8460db7dfece638e66.js",
     "service-worker.js": "/craftsman-frontend/service-worker.js",
     "static/css/2.04ff9426.chunk.css.map": "/craftsman-frontend/static/css/2.04ff9426.chunk.css.map",
     "static/css/main.0cf45641.chunk.css.map": "/craftsman-frontend/static/css/main.0cf45641.chunk.css.map",
-    "static/js/2.22f9ca7c.chunk.js.LICENSE.txt": "/craftsman-frontend/static/js/2.22f9ca7c.chunk.js.LICENSE.txt",
+    "static/js/2.6556aebd.chunk.js.LICENSE.txt": "/craftsman-frontend/static/js/2.6556aebd.chunk.js.LICENSE.txt",
     "static/media/project_image.jpg": "/craftsman-frontend/static/media/project_image.9d8a7c9c.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.f7bade5d.js",
     "static/css/2.04ff9426.chunk.css",
-    "static/js/2.22f9ca7c.chunk.js",
+    "static/js/2.6556aebd.chunk.js",
     "static/css/main.0cf45641.chunk.css",
-    "static/js/main.62898ef4.chunk.js"
+    "static/js/main.853ee2d3.chunk.js"
   ]
 }

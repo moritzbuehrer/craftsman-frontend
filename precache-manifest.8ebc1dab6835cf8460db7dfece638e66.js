@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "69f0b74848c9b9912341e70d93a5b62e",
+    "revision": "3a8e3e0825ed5335f8cd1af1f0a57264",
     "url": "/craftsman-frontend/index.html"
   },
   {
-    "revision": "6a8a46dc6f04b0e3579a",
+    "revision": "c4fa2dc6fc298d9de0db",
     "url": "/craftsman-frontend/static/css/2.04ff9426.chunk.css"
   },
   {
-    "revision": "feb05329a23eb4875b7b",
+    "revision": "288eeefa6cf61238269f",
     "url": "/craftsman-frontend/static/css/main.0cf45641.chunk.css"
   },
   {
-    "revision": "6a8a46dc6f04b0e3579a",
-    "url": "/craftsman-frontend/static/js/2.22f9ca7c.chunk.js"
+    "revision": "c4fa2dc6fc298d9de0db",
+    "url": "/craftsman-frontend/static/js/2.6556aebd.chunk.js"
   },
   {
-    "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/craftsman-frontend/static/js/2.22f9ca7c.chunk.js.LICENSE.txt"
+    "revision": "d3eab2c800484648f446253871549a7a",
+    "url": "/craftsman-frontend/static/js/2.6556aebd.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "feb05329a23eb4875b7b",
-    "url": "/craftsman-frontend/static/js/main.62898ef4.chunk.js"
+    "revision": "288eeefa6cf61238269f",
+    "url": "/craftsman-frontend/static/js/main.853ee2d3.chunk.js"
   },
   {
     "revision": "80075b8de7b974878b34",
