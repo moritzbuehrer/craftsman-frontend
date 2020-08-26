@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/craftsman-frontend/static/css/main.0cf45641.chunk.css",
-    "main.js": "/craftsman-frontend/static/js/main.853ee2d3.chunk.js",
-    "main.js.map": "/craftsman-frontend/static/js/main.853ee2d3.chunk.js.map",
+    "main.js": "/craftsman-frontend/static/js/main.e3f3497d.chunk.js",
+    "main.js.map": "/craftsman-frontend/static/js/main.e3f3497d.chunk.js.map",
     "runtime-main.js": "/craftsman-frontend/static/js/runtime-main.f7bade5d.js",
     "runtime-main.js.map": "/craftsman-frontend/static/js/runtime-main.f7bade5d.js.map",
     "static/css/2.04ff9426.chunk.css": "/craftsman-frontend/static/css/2.04ff9426.chunk.css",
     "static/js/2.6556aebd.chunk.js": "/craftsman-frontend/static/js/2.6556aebd.chunk.js",
     "static/js/2.6556aebd.chunk.js.map": "/craftsman-frontend/static/js/2.6556aebd.chunk.js.map",
     "index.html": "/craftsman-frontend/index.html",
-    "precache-manifest.8ebc1dab6835cf8460db7dfece638e66.js": "/craftsman-frontend/precache-manifest.8ebc1dab6835cf8460db7dfece638e66.js",
+    "precache-manifest.680d3591974b1c704a3fd13531d971bf.js": "/craftsman-frontend/precache-manifest.680d3591974b1c704a3fd13531d971bf.js",
     "service-worker.js": "/craftsman-frontend/service-worker.js",
     "static/css/2.04ff9426.chunk.css.map": "/craftsman-frontend/static/css/2.04ff9426.chunk.css.map",
     "static/css/main.0cf45641.chunk.css.map": "/craftsman-frontend/static/css/main.0cf45641.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.04ff9426.chunk.css",
     "static/js/2.6556aebd.chunk.js",
     "static/css/main.0cf45641.chunk.css",
-    "static/js/main.853ee2d3.chunk.js"
+    "static/js/main.e3f3497d.chunk.js"
   ]
 }

@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3a8e3e0825ed5335f8cd1af1f0a57264",
+    "revision": "25cf7dc58b54df38f16e69c5c4759055",
     "url": "/craftsman-frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/craftsman-frontend/static/css/2.04ff9426.chunk.css"
   },
   {
-    "revision": "288eeefa6cf61238269f",
+    "revision": "324a09e4432fe538bd08",
     "url": "/craftsman-frontend/static/css/main.0cf45641.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/craftsman-frontend/static/js/2.6556aebd.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "288eeefa6cf61238269f",
-    "url": "/craftsman-frontend/static/js/main.853ee2d3.chunk.js"
+    "revision": "324a09e4432fe538bd08",
+    "url": "/craftsman-frontend/static/js/main.e3f3497d.chunk.js"
   },
   {
     "revision": "80075b8de7b974878b34",
