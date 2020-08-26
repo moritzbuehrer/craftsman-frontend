@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Typography, Row, Col } from 'antd';
+import GoogleMapContainer from './GoogleMapContainer/GoogleMapContainer';
 
 const { Title, Text } = Typography;
 
@@ -11,27 +12,38 @@ class ProjectGeneralInfo extends React.Component {
         return (
             <div >
                 <Title level={2}>{this.props.currentProject.name}</Title>
-
                 <Row>
-                    <Col span={3}>
-                        <Text strong>Project Id:</Text>
+                    <Col span="16">
+                        <Row>
+                            <Col span={4}>
+                                <Row>
+                                    <Text strong>Project Id:</Text>
+                                </Row>
+                                <Row>
+                                    <Text strong>External Project Id:</Text>
+                                </Row>
+                                <Row>
+                                    <Text strong>Description:</Text>
+                                </Row>
+                            </Col>
+                            <Col span="20">
+                                <Row>
+                                    {this.props.currentProject.id}
+                                </Row>
+                                <Row>
+                                    {this.props.currentProject.externalId}
+                                </Row>
+                                <Row>
+                                    {this.props.currentProject.description}
+                                </Row>
+                            </Col>
+                        </Row>
                     </Col>
-                    <Col span={21}>
-                        {this.props.currentProject.id}
-                    </Col>
-                    <Col span={3}>
-                        <Text strong>External Project Id:</Text>
-                    </Col>
-                    <Col span={21}>
-                    {this.props.currentProject.externalId}
-                    </Col>
-                    <Col span={3}>
-                        <Text strong>Description:</Text>
-                    </Col>
-                    <Col span={21}>
-                    {this.props.currentProject.description}
+                    <Col span="8">
+                        <GoogleMapContainer/>
                     </Col>
                 </Row>
+
 
             </div>
         );

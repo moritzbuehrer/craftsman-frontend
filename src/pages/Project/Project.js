@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs, Input, Table } from 'antd';
+import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs, Input, Table, message } from 'antd';
 import { connect } from 'react-redux';
 import projectImage from '../../images/project_image.jpg';
 
@@ -67,6 +67,12 @@ class Project extends React.Component {
         let projectId = this.props.match.params.id;
     };
 
+    componentWillReceiveProps() {
+        if (this.props.message) {
+            message.success(this.props.message);
+        }
+    }
+
     showModal = () => {
         this.props.dispatch(toggleShowTimeTrackModal());
     };
@@ -90,11 +96,14 @@ class Project extends React.Component {
                     title={this.props.currentProject.name}
                     tags={<Tag color="blue">In Progress</Tag>}
                     subTitle={this.props.currentProject.id}
-                    extra={
+                    extra={[
                         <Button type="primary" onClick={() => this.showModal()}>
                             Arbeitszeit erfassen
+                        </Button>,
+                        <Button onClick={null}>
+                            Bearbeiten
                         </Button>
-                    }
+                    ]}
                     style={{ padding: '16px 0px' }}
                 >
 
@@ -142,7 +151,8 @@ class Project extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    currentProject: state.project.currentProject
+    currentProject: state.project.currentProject,
+    message: state.project.message
 });
 
 export default connect(mapStateToProps, null)(Project);

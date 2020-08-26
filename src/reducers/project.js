@@ -1,4 +1,4 @@
-import { SET_PROJECT_WORKING_TIME } from "../constants/actionTypes";
+import { SET_PROJECT_WORKING_TIME, RESET_PROJECT_MESSAGE } from "../constants/actionTypes";
 import { TOGGLE_SHOW_TIME_TRACK_MODAL, SET_PROJECT_NOTES } from './../constants/actionTypes';
 
 const initialState = {
@@ -36,6 +36,7 @@ const initialState = {
     ],
     showTimeTrackModal: false,
     loading: false,
+    message: null,
     error: null
 };
 
@@ -49,7 +50,8 @@ function project(state = initialState, action) {
                 currentProject: {
                     ...state.currentProject,
                     timeTracks: state.currentProject.timeTracks.concat(action.workingTime)
-                }
+                },
+                message:'Arbeitszeit erfolgreich erfasst'
             }
         case TOGGLE_SHOW_TIME_TRACK_MODAL:
             return {
@@ -60,6 +62,11 @@ function project(state = initialState, action) {
             return {
                 ...state,
                 notes: action.notes
+            }
+        case RESET_PROJECT_MESSAGE:
+            return {
+                ...state,
+                message: null
             }
         default:
             return state;
