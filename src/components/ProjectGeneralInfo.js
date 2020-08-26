@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Typography, Divider, Row, Col } from 'antd';
+import { Typography, Row, Col } from 'antd';
 
 const { Title, Text } = Typography;
 

@@ -1,4 +1,5 @@
 import { SET_PROJECT_WORKING_TIME } from "../constants/actionTypes";
+import { TOGGLE_SHOW_TIME_TRACK_MODAL, SET_PROJECT_NOTES } from './../constants/actionTypes';
 
 const initialState = {
     currentProject: {
@@ -7,7 +8,7 @@ const initialState = {
         name: "Kernsanierung",
         description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
         customerId: "1",
-        totalWorkingHours: 0,
+        notes: "Initial Note",
         timeTracks: []
     },
     projects: [
@@ -33,6 +34,7 @@ const initialState = {
             status: 'In Progress'
         }
     ],
+    showTimeTrackModal: false,
     loading: false,
     error: null
 };
@@ -46,11 +48,19 @@ function project(state = initialState, action) {
                 ...state,
                 currentProject: {
                     ...state.currentProject,
-                    timeTracks: state.currentProject.timeTracks.concat(action.workingTime),
-                    totalWorkingHours: state.currentProject.totalWorkingHours + parseInt(action.workingTime.workingTime)
+                    timeTracks: state.currentProject.timeTracks.concat(action.workingTime)
                 }
             }
-
+        case TOGGLE_SHOW_TIME_TRACK_MODAL:
+            return {
+                ...state,
+                showTimeTrackModal: !state.showTimeTrackModal
+            }
+        case SET_PROJECT_NOTES:
+            return {
+                ...state,
+                notes: action.notes
+            }
         default:
             return state;
     }

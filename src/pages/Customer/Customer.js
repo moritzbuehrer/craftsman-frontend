@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Tabs, Table, PageHeader, Descriptions } from 'antd';
-import { fetchCustomers, setCurrentCustomer, toggleCustomerChange } from '../../actions/customer';
+import { Tabs, Table, PageHeader } from 'antd';
+import { setCurrentCustomer, toggleCustomerChange } from '../../actions/customer';
 
 import './Customer.css';
 import CustomerGeneralInfo from './../../components/CustomerGeneralInfo.js/CustomerGeneralInfo';
@@ -59,8 +59,6 @@ class Customer extends React.Component {
     onChangButtonClick = () => {
         this.props.dispatch(toggleCustomerChange());
     }
-
-
 
     render() {
         return (
