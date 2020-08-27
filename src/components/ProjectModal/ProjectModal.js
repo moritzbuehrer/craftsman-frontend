@@ -1,7 +1,7 @@
 import React from 'react';
-import { Modal, Button, Form, AutoComplete, Input, InputNumber } from 'antd';
+import { Modal, Button, Form, AutoComplete, Input } from 'antd';
 import { connect } from 'react-redux';
-import { toggleShowTimeTrackModal, setWorkingTime, resetProjectMessage } from '../../actions/project';
+import { resetProjectMessage, toggleShowNewProjectModal } from '../../actions/project';
 
 
 const options = [
@@ -19,28 +19,27 @@ const tailLayout = {
     wrapperCol: { offset: 6, span: 18 },
 };
 
-class TimeTrackModal extends React.Component {
+class ProjectModal extends React.Component {
+
+    mapCustomersForAutocomplete = (customers) => {
+        for (let customer of customers) {
+            console.log(customer);
+        }
+    }
 
     handleOk = formValues => {
-        var timeTrack = {
-            id: "",
-            employee: formValues.employee,
-            workingTime: formValues.Duration,
-            note: formValues.note
-        }
-        this.props.dispatch(setWorkingTime(timeTrack));
-        this.props.dispatch(toggleShowTimeTrackModal());
+        this.props.dispatch(toggleShowNewProjectModal());
         this.props.dispatch(resetProjectMessage());
     };
 
     handleCancel = e => {
-        this.props.dispatch(toggleShowTimeTrackModal());
+        this.props.dispatch(toggleShowNewProjectModal());
     };
 
     render() {
         return (
             <Modal
-                title="Neue Arbeitszeit hinzufügen"
+                title="Neues Projekt hinzufügen"
                 visible={this.props.showModal}
                 onCancel={this.handleCancel}
                 footer={null}
@@ -54,39 +53,32 @@ class TimeTrackModal extends React.Component {
                     preserve={false}
                 >
                     <Form.Item
-                        label="Employee"
-                        name="employee"
-                        rules={[{ required: true, message: 'Bitte Mitarbeiter angeben' }]}
+                        label="Projektname"
+                        name="projectname"
+                        rules={[{ required: true, message: 'Bitte Projektname angeben' }]}
+                    >
+                        <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Kunde"
+                        name="customer"
+                        rules={[{ required: true, message: 'Bitte Kunden angeben' }]}
                     >
                         <AutoComplete
-                            options={options}
+                            options={this.props.customers}
                             placeholder="Nach Mitarbeitern suchen..."
                             filterOption={(inputValue, option) =>
                                 option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                             }
                         />
                     </Form.Item>
-
-                    <Form.Item
-                        label="Duration"
-                        name="Duration"
-                        rules={[{ required: true, message: 'Please set Working Time duration' }, { type: 'number' }]}
-                    >
-                        <InputNumber min={0} />
-                    </Form.Item>
-
-                    <Form.Item
-                        label="Note"
-                        name="note"
-                    >
-                        <Input />
-                    </Form.Item>
                     <Form.Item {...tailLayout}>
                         <Button type="primary" htmlType="submit">
                             Speichern
                         </Button>
-                        <Button style={{ "margin-left": '8px' }} onClick={this.handleCancel}>
-                            Abbrechen
+                            <Button style={{ "margin-left": '8px' }} onClick={this.handleCancel}>
+                                Abbrechen
                         </Button>
                     </Form.Item>
                 </Form>
@@ -96,7 +88,10 @@ class TimeTrackModal extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    showModal: state.project.showTimeTrackModal
+    showModal: state.project.showNewProjectModal,
+    customers: state.customer.customers.map(customer => {
+        return { "value": customer.name + " " + customer.firstName}
+    })
 });
 
-export default connect(mapStateToProps, null)(TimeTrackModal);
+export default connect(mapStateToProps, null)(ProjectModal);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Table } from 'antd';
+import { Table, PageHeader, Button } from 'antd';
 import { connect } from 'react-redux';
 
 const columns = [
@@ -42,6 +42,16 @@ class CustomerList extends React.Component {
     render() {
         return (
             <div>
+                <PageHeader
+                    onBack={() => window.history.back()}
+                    title="Kunden"
+                    extra={
+                        <Button type="primary">
+                            Hinzufügen
+                        </Button>
+                    }
+                    style={{ padding: '16px 0px' }}
+                />
                 <Table columns={columns} dataSource={this.props.customers} />
             </div>
         );

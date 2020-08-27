@@ -1,5 +1,5 @@
 import { SET_PROJECT_WORKING_TIME, RESET_PROJECT_MESSAGE } from "../constants/actionTypes";
-import { TOGGLE_SHOW_TIME_TRACK_MODAL, SET_PROJECT_NOTES } from './../constants/actionTypes';
+import { TOGGLE_SHOW_TIME_TRACK_MODAL, SET_PROJECT_NOTES, TOGGLE_SHOW_NEW_PROJECT_MODAL } from './../constants/actionTypes';
 
 export function setWorkingTime(workingTime) {
     return {
@@ -17,6 +17,12 @@ export function resetProjectMessage() {
 export function toggleShowTimeTrackModal() {
     return {
         type: TOGGLE_SHOW_TIME_TRACK_MODAL
+    }
+};
+
+export function toggleShowNewProjectModal() {
+    return {
+        type: TOGGLE_SHOW_NEW_PROJECT_MODAL
     }
 };
 

@@ -1,7 +1,9 @@
 import React from 'react';
-import { Table } from 'antd';
+import { Table, Button, PageHeader } from 'antd';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { toggleShowNewProjectModal } from '../../actions/project';
+import ProjectModal from '../../components/ProjectModal/ProjectModal';
 
 const columns = [
     {
@@ -32,11 +34,26 @@ const columns = [
     }
 ];
 
-class ProjectList extends React.Component{
+class ProjectList extends React.Component {
 
-    render(){
-        return(
+    onNewProject = () => {
+        this.props.dispatch(toggleShowNewProjectModal())
+    }
+
+    render() {
+        return (
             <div>
+                <ProjectModal/>
+                <PageHeader
+                    onBack={() => window.history.back()}
+                    title="Projekte"
+                    extra={
+                        <Button type="primary" onClick={this.onNewProject}>
+                            Hinzufügen
+                        </Button>
+                    }
+                    style={{ padding: '16px 0px' }}
+                />
                 <Table columns={columns} dataSource={this.props.projects} />
             </div>
         );

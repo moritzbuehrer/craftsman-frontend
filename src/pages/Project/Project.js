@@ -15,19 +15,19 @@ const { TabPane } = Tabs;
 
 const columnsTimeTrack = [
     {
-        title: 'Employee',
+        title: 'Mitarbeiter',
         dataIndex: 'employee',
         key: 'employee',
         render: text => <a>{text}</a>,
     },
     {
-        title: 'Working Time',
+        title: 'Arbeitszeit',
         dataIndex: 'workingTime',
         key: 'workingTime',
         render: text => <div>{text} h</div>,
     },
     {
-        title: 'Note',
+        title: 'Notiz',
         dataIndex: 'note',
         key: 'note',
     }
@@ -49,7 +49,7 @@ const columnsDevices = [
 
 const columnsResponsibleEmpolyees = [
     {
-        title: 'Employee',
+        title: 'Mitarbeiterx^x',
         dataIndex: 'employee',
         key: 'employee',
         render: text => <a>{text}</a>,

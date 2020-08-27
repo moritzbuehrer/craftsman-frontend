@@ -1,5 +1,5 @@
 import { SET_PROJECT_WORKING_TIME, RESET_PROJECT_MESSAGE } from "../constants/actionTypes";
-import { TOGGLE_SHOW_TIME_TRACK_MODAL, SET_PROJECT_NOTES } from './../constants/actionTypes';
+import { TOGGLE_SHOW_TIME_TRACK_MODAL, SET_PROJECT_NOTES, TOGGLE_SHOW_NEW_PROJECT_MODAL } from './../constants/actionTypes';
 
 const initialState = {
     currentProject: {
@@ -35,7 +35,7 @@ const initialState = {
         }
     ],
     showTimeTrackModal: false,
-    loading: false,
+    showNewProjectModal: false,
     message: null,
     error: null
 };
@@ -67,6 +67,11 @@ function project(state = initialState, action) {
             return {
                 ...state,
                 message: null
+            }
+        case TOGGLE_SHOW_NEW_PROJECT_MODAL:
+            return {
+                ...state,
+                showNewProjectModal: !state.showNewProjectModal
             }
         default:
             return state;
