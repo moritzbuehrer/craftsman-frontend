@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { SET_PROJECT_WORKING_TIME, POST_PROJECT_SUCCESS, GET_ALL_CUSTOMERS_SUCCESS } from "../constants/actionTypes";
+import { SET_PROJECT_WORKING_TIME, POST_PROJECT_SUCCESS } from "../constants/actionTypes";
 import { TOGGLE_SHOW_TIME_TRACK_MODAL, TOGGLE_SHOW_NEW_PROJECT_MODAL, POST_PROJECT_ERROR, GET_ALL_PROJECTS_SUCCESS, GET_ALL_PROJECTS_ERROR, GET_PROJECT_SUCCESS, GET_PROJECT_ERROR } from './../constants/actionTypes';
 import { startLoading } from './general';
 import { message } from 'antd';
@@ -43,6 +43,14 @@ export const postProject = (formProject, history) => {
             status: "Erstellt",
             customer: {},
             timeTracks: [],
+            address: {
+                type: "MAIN",
+                street: formProject.street,
+                number: formProject.number,
+                postcode: formProject.postcode,
+                city: formProject.city,
+                country: formProject.country
+            },
         }
 
         axios.post('http://localhost:8080/project', project)

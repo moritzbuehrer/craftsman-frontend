@@ -47,8 +47,12 @@ class ProjectModal extends React.Component {
                         <Input />
                     </Form.Item>
 
+                    <Form.Item label="Beschreibung" name="description" >
+                        <Input />
+                    </Form.Item>
+
                     <Form.Item
-                        label="Kunde"
+                        label="Kunden Id"
                         name="customer"
                         rules={[{ required: true, message: 'Bitte einen Kunden angeben' }]}
                     >
@@ -60,6 +64,27 @@ class ProjectModal extends React.Component {
                             }
                         />
                     </Form.Item>
+
+                    <Form.Item label="Adresse" name="street" >
+                        <Input.Group >
+                            <Form.Item name="street" noStyle>
+                                <Input placeholder="Straße" style={{ width: '70%' }} />
+                            </Form.Item>
+                            <Form.Item name="number" >
+                                <Input placeholder="Nr." />
+                            </Form.Item>
+                            <Form.Item name="postcode" noStyle>
+                                <Input placeholder="PLZ" style={{ width: '30%' }} />
+                            </Form.Item>
+                            <Form.Item name="city" >
+                                <Input placeholder="Stadt" />
+                            </Form.Item>
+                            <Form.Item name="country" >
+                                <Input placeholder="Land" />
+                            </Form.Item>
+                        </Input.Group>
+                    </Form.Item>
+
                     <Form.Item {...tailLayout}>
                         <Button type="primary" htmlType="submit">
                             Speichern
@@ -77,8 +102,10 @@ class ProjectModal extends React.Component {
 const mapStateToProps = (state) => ({
     showModal: state.project.showNewProjectModal,
     customers: state.customer.customers.map(customer => {
-        return { "value": customer.id + " | " + customer.name + " " + customer.firstName,
-                 "customer": customer }
+        return {
+            "value": customer.id + " | " + customer.name + " " + customer.firstName,
+            "customer": customer
+        }
     })
 });
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import projectImage from '../../images/project_image.jpg';
 
 import './Project.css'
-import ProjectGeneralInfo from '../../components/ProjectGeneralInfo';
+import ProjectGeneralInfo from '../../components/ProjectGeneralInfo/ProjectGeneralInfo';
 import ProjectImages from '../../components/ProjectImages';
 import TimeTrackModal from '../../components/TimeTrackModal/TimeTrackModal';
 
@@ -130,7 +130,7 @@ class Project extends React.Component {
 
                 <Tabs defaultActiveKey="1">
                     <TabPane tab="Allgemeine Informationen" key="1">
-                        {/* <ProjectGeneralInfo /> */}
+                        <ProjectGeneralInfo />
                     </TabPane>
                     <TabPane tab="Verantwortliche Mitarbeiter" key="2">
                         <Table columns={columnsResponsibleEmpolyees} dataSource={null} />

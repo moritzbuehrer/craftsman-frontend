@@ -10,6 +10,16 @@ const initialState = {
         status: "",
         customer: {},
         timeTracks: [],
+        address:
+        {
+            id: "",
+            type: "MAIN",
+            street: "",
+            number: "",
+            postcode: "",
+            city: "",
+            country: ""
+        },
 
         startDate: '01.01.2020',
         plannedEndDate: '01.01.2021',
@@ -23,29 +33,7 @@ const initialState = {
         notes: "Initial Note",
 
     },
-    projects: [
-        {
-            id: '1',
-            name: 'Project 1',
-            customer: 'Test GmbH',
-            address: 'New York No. 1 Lake Park',
-            status: 'In Progress'
-        },
-        {
-            id: '2',
-            name: 'Project 2',
-            customer: 'Test GmbH',
-            address: 'London No. 1 Lake Park',
-            status: 'In Progress'
-        },
-        {
-            id: '3',
-            name: 'Project 4',
-            customer: 'Test GmbH',
-            address: 'Sidney No. 1 Lake Park',
-            status: 'In Progress'
-        }
-    ],
+    projects: [],
     showTimeTrackModal: false,
     showNewProjectModal: false
 };

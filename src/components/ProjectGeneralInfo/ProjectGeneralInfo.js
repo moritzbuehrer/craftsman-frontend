@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Typography, Row, Col, Divider, Button, PageHeader } from 'antd';
-import GoogleMapContainer from './GoogleMapContainer/GoogleMapContainer';
+import GoogleMapContainer from '../GoogleMapContainer/GoogleMapContainer';
 
 const { Title, Text } = Typography;
 
@@ -65,10 +65,10 @@ class ProjectGeneralInfo extends React.Component {
                                     <Text strong>Straße / Nr.:</Text>
                                 </Row>
                                 <Row>
-                                    <Text strong>Stadt:</Text>
+                                    <Text strong>Postleitzahl:</Text>
                                 </Row>
                                 <Row>
-                                    <Text strong>Postleitzahl:</Text>
+                                    <Text strong>Stadt:</Text>
                                 </Row>
                                 <Row>
                                     <Text strong>Land:</Text>
@@ -77,16 +77,16 @@ class ProjectGeneralInfo extends React.Component {
                             </Col>
                             <Col span="20">
                                 <Row>
-                                    Mündchen Str. 4
+                                    {this.props.currentProject.address.street}
                                 </Row>
                                 <Row>
-                                    Hamburg
+                                    {this.props.currentProject.address.postcode}
                                 </Row>
                                 <Row>
-                                    66575
+                                    {this.props.currentProject.address.city}
                                 </Row>
                                 <Row>
-                                    DE
+                                    {this.props.currentProject.address.country}
                                 </Row>
                             </Col>
                         </Row>
@@ -97,7 +97,7 @@ class ProjectGeneralInfo extends React.Component {
                 </div>
 
                 <Divider orientation="left">Kontaktperson</Divider>
-                <div>
+                {/* <div>
                     <Row>
                         <Col span={4}>
                             <Row>
@@ -122,7 +122,7 @@ class ProjectGeneralInfo extends React.Component {
                             </Row>
                         </Col>
                     </Row>
-                </div>
+                </div> */}
             </div >
         );
     }
