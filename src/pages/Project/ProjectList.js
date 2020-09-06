@@ -19,8 +19,8 @@ const columns = [
     },
     {
         title: 'Kunde',
-        dataIndex: 'age',
-        key: 'age',
+        dataIndex: 'customer',
+        key: 'customer',
     },
     {
         title: 'Adresse',
@@ -43,7 +43,7 @@ class ProjectList extends React.Component {
     render() {
         return (
             <div>
-                <ProjectModal/>
+                <ProjectModal />
                 <PageHeader
                     onBack={() => window.history.back()}
                     title="Projekte"
@@ -62,7 +62,8 @@ class ProjectList extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    projects: state.project.projects
+    projects: state.project.projects,
+    error: state.general.error
 });
 
 export default connect(mapStateToProps, null)(ProjectList);

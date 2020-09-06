@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Tabs, Table, PageHeader, Button } from 'antd';
-import { setCurrentCustomer, toggleCustomerChange } from '../../actions/customer';
 
 import './Customer.css';
 import CustomerGeneralInfo from './../../components/CustomerGeneralInfo.js/CustomerGeneralInfo';
+import { getCustomer } from './../../actions/customer';
 
 const { TabPane } = Tabs;
 
@@ -58,12 +58,12 @@ const data = [
 
 class Customer extends React.Component {
 
-    onListItemClick = (customer) => {
-        this.props.dispatch(setCurrentCustomer(customer));
+    componentDidMount() {
+        this.props.dispatch(getCustomer(this.props.match.params.id));
     }
 
     onChangButtonClick = () => {
-        this.props.dispatch(toggleCustomerChange());
+
     }
 
     render() {
@@ -72,7 +72,7 @@ class Customer extends React.Component {
                 <PageHeader
                     onBack={() => window.history.back()}
                     title={this.props.customer.name}
-                    subTitle={this.props.customer.id}
+                    subTitle={this.props.match.params.id}
                     style={{ padding: '16px 0px' }}
                     extra={
                         <Button onClick={null}>

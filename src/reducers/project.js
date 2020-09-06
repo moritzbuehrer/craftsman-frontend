@@ -6,8 +6,16 @@ const initialState = {
         id: "2020-03-0001",
         externalId: "987654321",
         name: "Kernsanierung",
+        startDate: '01.01.2020',
+        plannedEndDate: '01.01.2021',
         description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
         customerId: "1",
+        contactPerson: {
+            id: 1,
+            name: 'Marc-Robin',
+            phone: '0127478236324',
+            mail: 'test@mail.de'
+        },
         notes: "Initial Note",
         timeTracks: []
     },
@@ -15,27 +23,28 @@ const initialState = {
         {
             id: '1',
             name: 'Project 1',
-            age: 'Test GmbH',
+            customer: 'Test GmbH',
             address: 'New York No. 1 Lake Park',
             status: 'In Progress'
         },
         {
             id: '2',
             name: 'Project 2',
-            age: 'Test GmbH',
+            customer: 'Test GmbH',
             address: 'London No. 1 Lake Park',
             status: 'In Progress'
         },
         {
             id: '3',
             name: 'Project 4',
-            age: 'Test GmbH',
+            customer: 'Test GmbH',
             address: 'Sidney No. 1 Lake Park',
             status: 'In Progress'
         }
     ],
     showTimeTrackModal: false,
     showNewProjectModal: false,
+    editMode: true,
     message: null,
     error: null
 };
@@ -51,7 +60,7 @@ function project(state = initialState, action) {
                     ...state.currentProject,
                     timeTracks: state.currentProject.timeTracks.concat(action.workingTime)
                 },
-                message:'Arbeitszeit erfolgreich erfasst'
+                messcustomer:'Arbeitszeit erfolgreich erfasst'
             }
         case TOGGLE_SHOW_TIME_TRACK_MODAL:
             return {

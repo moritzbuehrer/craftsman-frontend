@@ -1,96 +1,61 @@
-
-import { FETCH_CUSTOMERS_START, FETCH_CUSTOMERS_SUCCESS, FETCH_CUSTOMERS_ERROR, SET_CURRENT_CUSTOMER, TOGGLE_CUSTOMER_CHANGE } from './../constants/actionTypes';
+import { TOGGLE_SHOW_NEW_CUSTOMER_MODAL, POST_CUSTOMER_SUCCESS, POST_CUSTOMER_ERROR, GET_ALL_CUSTOMERS_SUCCESS, GET_ALL_CUSTOMERS_ERROR, GET_CUSTOMER_SUCCESS, GET_CUSTOMER_ERROR } from './../constants/actionTypes';
 
 const initialState = {
     currentCustomer: {
-        id: '1',
-        name: 'Bau GmbH',
-        firstName: '',
-        phone: '018863648176',
-        email: 'test@web.de',
-        street: 'Test Ave. 8',
-        postcode: '87967',
-        city: 'Hamburg',
-        country: 'DE'
+        id: "",
+        name: "",
+        firstName: "",
+        phone: "",
+        email: "",
+        addresses: [
+            {
+                id: "",
+                type: "MAIN",
+                street: "",
+                number: "",
+                postcode: "",
+                city: "",
+                country: ""
+            }
+        ]
     },
-    customers: [
-        {
-            id: '1',
-            name: 'Bau GmbH',
-            firstName: '',
-            phone: '018863648176',
-            email: 'test@web.de',
-            street: 'Test Ave. 8',
-            postcode: '87967',
-            city: 'Hamburg',
-            country: 'DE'
-        },
-        {
-            id: '2',
-            name: 'Maler GmbH',
-            firstName: '',
-            phone: '018863648176',
-            email: 'test@web.de',
-            street: 'Berlin Ave. 8',
-            postcode: '87967',
-            city: 'Berlin',
-            country: 'DE'
-        },
-        {
-            id: '3',
-            name: 'Müller',
-            firstName: 'Thomas',
-            phone: '018863648176',
-            email: 'test@web.de',
-            street: 'Freibrug Ave. 8',
-            postcode: '87967',
-            city: 'Freibrug',
-            country: 'DE'
-        }
-    ],
-    loading: false,
-    error: null,
-    changeMode: false
+    customers: [],
+    showNewCustomerModal: false
 };
 
 function customer(state = initialState, action) {
 
     switch (action.type) {
-
-        case FETCH_CUSTOMERS_START:
+        case TOGGLE_SHOW_NEW_CUSTOMER_MODAL:
             return {
                 ...state,
-                loading: true
+                showNewCustomerModal: !state.showNewCustomerModal
             }
-        case FETCH_CUSTOMERS_SUCCESS:
+        case POST_CUSTOMER_SUCCESS:
             return {
                 ...state,
-                loading: false,
+                currentCustomer: action.customer,
+                customers: [...state.customers, action.customer],
+                showNewCustomerModal: false
+            }
+        case GET_ALL_CUSTOMERS_SUCCESS:
+            return {
+                ...state,
                 customers: action.customers
             }
-        case FETCH_CUSTOMERS_ERROR:
+        case GET_CUSTOMER_SUCCESS:
             return {
                 ...state,
-                loading: false,
-                error: action.error
+                currentCustomer: action.customer,
+                showNewCustomerModal: false
             }
-        case SET_CURRENT_CUSTOMER:
+        case POST_CUSTOMER_ERROR:
+        case GET_ALL_CUSTOMERS_ERROR:
+        case GET_CUSTOMER_ERROR:
             return {
                 ...state,
-                currentCustomer: {
-                    id: action.customer.id,
-                    firstName: action.customer.firstName,
-                    lastName: action.customer.name,
-                    phoneNumber: action.customer.phoneNumber,
-                    email: action.customer.email
-                }
+                showNewCustomerModal: false
             }
-        case TOGGLE_CUSTOMER_CHANGE:
-            return {
-                ...state,
-                changeMode: !state.changeMode
-            }
-
         default:
             return state;
     }

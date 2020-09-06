@@ -8,23 +8,23 @@ class ProjectGeneralInfo extends React.Component {
     render() {
         return (
             <div>
-                <Row style={{height: '100%'}}>
+                <Row style={{ height: '100%' }}>
                     <Col span="16">
                         <Row>
                             <Col span={8}>
                                 <Row>
                                     Name:
-                            </Row>
+                                </Row>
                                 {this.props.customer.firstName ? <Row> Vorname: </Row> : null}
                                 <Row>
                                     Adresse:
-                            </Row>
+                                </Row>
                                 <Row>
                                     Telefon Nummer:
-                            </Row>
+                                </Row>
                                 <Row>
                                     Email:
-                            </Row>
+                                </Row>
                             </Col>
                             <Col span={16}>
                                 <Row>
@@ -35,7 +35,8 @@ class ProjectGeneralInfo extends React.Component {
                                     {this.props.customer.firstName}
                                 </Row>
                                 <Row>
-                                    {this.props.customer.street}
+                                    {this.props.customer.addresses.find(address => address.type === 'MAIN').street + ' ' +
+                                    this.props.customer.addresses.find(address => address.type === 'MAIN').number}
                                 </Row>
                                 <Row>
                                     {this.props.customer.phone}
@@ -47,7 +48,9 @@ class ProjectGeneralInfo extends React.Component {
                         </Row>
                     </Col>
                     <Col span="8">
-                        <GoogleMapContainer />
+                        <div style={{ height: '400px' }}>
+                            <GoogleMapContainer />
+                        </div>
                     </Col>
                 </Row>
             </div>

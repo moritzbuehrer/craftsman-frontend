@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs, Input, Table, message } from 'antd';
+import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs, Input, Table } from 'antd';
 import { connect } from 'react-redux';
 import projectImage from '../../images/project_image.jpg';
 
@@ -49,7 +49,7 @@ const columnsDevices = [
 
 const columnsResponsibleEmpolyees = [
     {
-        title: 'Mitarbeiterx^x',
+        title: 'Mitarbeiter',
         dataIndex: 'employee',
         key: 'employee',
         render: text => <a>{text}</a>,
@@ -63,15 +63,16 @@ const columnsResponsibleEmpolyees = [
 
 class Project extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            contactPerson: ""
+        }
+    }
+
     componentDidMount() {
         let projectId = this.props.match.params.id;
     };
-
-    componentWillReceiveProps() {
-        if (this.props.message) {
-            message.success(this.props.message);
-        }
-    }
 
     showModal = () => {
         this.props.dispatch(toggleShowTimeTrackModal());
@@ -87,7 +88,15 @@ class Project extends React.Component {
         return aggregatedWorkingTimes;
     };
 
+    onInputChange(e) {
+        console.log(this.state);
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
     render() {
+
         return (
             <div>
                 <TimeTrackModal />
@@ -95,7 +104,7 @@ class Project extends React.Component {
                     onBack={() => window.history.back()}
                     title={this.props.currentProject.name}
                     tags={<Tag color="blue">In Progress</Tag>}
-                    subTitle={this.props.currentProject.id}
+                    subTitle={this.props.match.params.id}
                     extra={[
                         <Button type="primary" onClick={() => this.showModal()}>
                             Arbeitszeit erfassen
@@ -113,10 +122,18 @@ class Project extends React.Component {
                         </Col>
                         <Col span={16}>
                             <Descriptions size="small" column={3}>
-                                <Descriptions.Item label="Kontaktperson">Marc-Robin Dück</Descriptions.Item>
-                                <Descriptions.Item label="Geplantes Start Datum">2017-01-10</Descriptions.Item>
-                                <Descriptions.Item label="Effektives Start Datum">2017-10-10</Descriptions.Item>
-                                <Descriptions.Item label="Telefonnummer">004919879327498</Descriptions.Item>
+                                <Descriptions.Item label="Kontaktperson">
+                                        {this.props.currentProject.contactPerson.name}
+                                </Descriptions.Item>
+                                <Descriptions.Item label="Start Datum">
+                                    {this.props.currentProject.startDate}
+                                </Descriptions.Item>
+                                <Descriptions.Item label="Geplantes End Datum">
+                                    {this.props.currentProject.plannedEndDate}
+                                    </Descriptions.Item>
+                                <Descriptions.Item label="Telefonnummer">
+                                    {this.props.currentProject.contactPerson.phone}
+                                </Descriptions.Item>
                             </Descriptions>
                         </Col>
                         <Col span={4}>
@@ -152,10 +169,10 @@ class Project extends React.Component {
 
 const mapStateToProps = (state) => ({
     currentProject: state.project.currentProject,
-    message: state.project.message
+    editMode: state.project.editMode
 });
 
-export default connect(mapStateToProps, null)(Project);
+export default connect(mapStateToProps)(Project);
 
 
 

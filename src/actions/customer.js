@@ -1,49 +1,85 @@
+import axios from 'axios';
+import { TOGGLE_SHOW_NEW_CUSTOMER_MODAL, POST_CUSTOMER_SUCCESS, POST_CUSTOMER_ERROR, GET_ALL_CUSTOMERS_SUCCESS, GET_ALL_CUSTOMERS_ERROR, GET_CUSTOMER_SUCCESS, GET_CUSTOMER_ERROR } from './../constants/actionTypes';
+import { message } from 'antd';
+import { startLoading } from './general';
 
-import { FETCH_CUSTOMERS_START, FETCH_CUSTOMERS_SUCCESS, FETCH_CUSTOMERS_ERROR, SET_CURRENT_CUSTOMER, TOGGLE_CUSTOMER_CHANGE } from './../constants/actionTypes';
-
-export function toggleCustomerChange() {
+export function toggleNewCustomerModal() {
     return {
-        type: TOGGLE_CUSTOMER_CHANGE
+        type: TOGGLE_SHOW_NEW_CUSTOMER_MODAL
     }
 };
 
-export function setCurrentCustomer(customer) {
+export function postCustomerSuccess(customer) {
     return {
-        type: SET_CURRENT_CUSTOMER,
+        type: POST_CUSTOMER_SUCCESS,
         customer: customer
     }
 };
 
-function fetchCustomersLoading(payload) {
+export function postCustomerError(error) {
     return {
-        type: FETCH_CUSTOMERS_START
-    }
-};
-
-function fetchCustomersSuccess(customers) {
-    return {
-        type: FETCH_CUSTOMERS_SUCCESS,
-        customers: customers
-    }
-};
-
-function fetchCustomersError(error) {
-    return {
-        type: FETCH_CUSTOMERS_ERROR,
+        type: POST_CUSTOMER_ERROR,
         error: error
     }
 };
 
-export function fetchCustomers() {
+export const postCustomer = (formCustomer, history) => {
     return (dispatch) => {
-        dispatch(fetchCustomersLoading());
-        fetch('http://localhost:8080/customer')
-            .then(res => res.json())
+        dispatch(startLoading());
+
+        var customer = {
+            "name": formCustomer.name,
+            "firstName": formCustomer.firstName,
+            "phone": formCustomer.phone,
+            "email": formCustomer.mail,
+            "addresses": [
+                {
+                    "type": "MAIN",
+                    "street": formCustomer.street,
+                    "number": formCustomer.number,
+                    "city": formCustomer.city,
+                    "country": formCustomer.country
+                }
+            ]
+        }
+
+        axios.post('http://localhost:8080/customer', customer)
+            .then(res => {
+                dispatch(postCustomerSuccess(res.data));
+                history.push('customer/' + res.data.id);
+                message.success('Neuer Kunde erfolgreich angelegt');
+            })
+            .catch(error => {
+                message.error('Fehler beim Anlegen eines neuen Projekts');
+                dispatch(postCustomerError(error))
+            })
+    }
+}
+
+export function getAllCustomersSuccess(customers) {
+    return {
+        type: GET_ALL_CUSTOMERS_SUCCESS,
+        customers: customers
+    }
+};
+
+export function getAllCustomersError(error) {
+    return {
+        type: GET_ALL_CUSTOMERS_ERROR,
+        error: error
+    }
+};
+
+export const getAllCustomers = () => {
+    return (dispatch) => {
+
+        dispatch(startLoading());
+
+        axios.get('http://localhost:8080/customer')
             .then(res => {
 
                 var customers = [];
-
-                res.forEach(function (customer, index) {
+                res.data.forEach(function (customer, index) {
                     customers.push({
                         id: customer.id,
                         name: customer.name,
@@ -53,11 +89,44 @@ export function fetchCustomers() {
                     });
                 });
 
-                dispatch(fetchCustomersSuccess(customers));
+                dispatch(getAllCustomersSuccess(customers));
+
             })
             .catch(error => {
-                dispatch(fetchCustomersError(error));
-                console.log(error);
+                message.error('Fehler beim laden der Kunden');
+                dispatch(getAllCustomersError(error))
+            })
+    }
+}
+
+export function getCustomerSuccess(customer) {
+    return {
+        type: GET_CUSTOMER_SUCCESS,
+        customer: customer
+    }
+};
+
+export function getCustomerError(error) {
+    return {
+        type: GET_CUSTOMER_ERROR,
+        error: error
+    }
+};
+
+export const getCustomer = (customerId) => {
+    return (dispatch) => {
+
+        dispatch(startLoading());
+
+        axios.get('http://localhost:8080/customer/' + customerId)
+            .then(res => {
+
+                dispatch(getCustomerSuccess(res.data));
+
+            })
+            .catch(error => {
+                message.error('Fehler beim laden des Kunden');
+                dispatch(getCustomerError(error))
             })
     }
 }

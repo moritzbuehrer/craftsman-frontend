@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Table, PageHeader, Button } from 'antd';
 import { connect } from 'react-redux';
+import { toggleNewCustomerModal, getAllCustomers } from '../../actions/customer';
+import CustomerModal from '../../components/CustomerModal/CustomerModal';
 
 const columns = [
     {
@@ -38,15 +40,24 @@ const columns = [
 ];
 
 class CustomerList extends React.Component {
+    
+    componentDidMount() {
+        this.props.dispatch(getAllCustomers());
+    }
+
+    onNewCustomer = () => {
+        this.props.dispatch(toggleNewCustomerModal())
+    }
 
     render() {
         return (
             <div>
+                <CustomerModal/>
                 <PageHeader
                     onBack={() => window.history.back()}
                     title="Kunden"
                     extra={
-                        <Button type="primary">
+                        <Button type="primary" onClick={this.onNewCustomer}>
                             Hinzufügen
                         </Button>
                     }

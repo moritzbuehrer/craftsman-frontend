@@ -1,14 +1,8 @@
 import React from 'react';
 import { Modal, Button, Form, AutoComplete, Input } from 'antd';
 import { connect } from 'react-redux';
-import { resetProjectMessage, toggleShowNewProjectModal } from '../../actions/project';
-
-
-const options = [
-    { value: 'John Doe' },
-    { value: 'Max Mustermann' },
-    { value: 'Test User1' },
-];
+import { withRouter } from 'react-router-dom';
+import { toggleShowNewProjectModal, postProject } from '../../actions/project';
 
 const layout = {
     labelCol: { span: 6 },
@@ -21,15 +15,8 @@ const tailLayout = {
 
 class ProjectModal extends React.Component {
 
-    mapCustomersForAutocomplete = (customers) => {
-        for (let customer of customers) {
-            console.log(customer);
-        }
-    }
-
     handleOk = formValues => {
-        this.props.dispatch(toggleShowNewProjectModal());
-        this.props.dispatch(resetProjectMessage());
+        this.props.dispatch(postProject(formValues, this.props.history))
     };
 
     handleCancel = e => {
@@ -47,15 +34,15 @@ class ProjectModal extends React.Component {
             >
                 <Form
                     {...layout}
-                    name="timeTrackForm"
+                    name="newProjectForm"
                     onFinish={this.handleOk}
                     onFinishFailed={() => { }}
                     preserve={false}
                 >
                     <Form.Item
                         label="Projektname"
-                        name="projectname"
-                        rules={[{ required: true, message: 'Bitte Projektname angeben' }]}
+                        name="name"
+                        rules={[{ required: true, message: 'Bitte einen Projektnamen angeben' }]}
                     >
                         <Input />
                     </Form.Item>
@@ -63,11 +50,11 @@ class ProjectModal extends React.Component {
                     <Form.Item
                         label="Kunde"
                         name="customer"
-                        rules={[{ required: true, message: 'Bitte Kunden angeben' }]}
+                        rules={[{ required: true, message: 'Bitte einen Kunden angeben' }]}
                     >
                         <AutoComplete
                             options={this.props.customers}
-                            placeholder="Nach Mitarbeitern suchen..."
+                            placeholder="Nach Kunden suchen..."
                             filterOption={(inputValue, option) =>
                                 option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                             }
@@ -77,8 +64,8 @@ class ProjectModal extends React.Component {
                         <Button type="primary" htmlType="submit">
                             Speichern
                         </Button>
-                            <Button style={{ "margin-left": '8px' }} onClick={this.handleCancel}>
-                                Abbrechen
+                        <Button style={{ "margin-left": '8px' }} onClick={this.handleCancel}>
+                            Abbrechen
                         </Button>
                     </Form.Item>
                 </Form>
@@ -90,8 +77,8 @@ class ProjectModal extends React.Component {
 const mapStateToProps = (state) => ({
     showModal: state.project.showNewProjectModal,
     customers: state.customer.customers.map(customer => {
-        return { "value": customer.name + " " + customer.firstName}
+        return { "value": customer.id + " " + customer.name + " " + customer.firstName }
     })
 });
 
-export default connect(mapStateToProps, null)(ProjectModal);
+export default withRouter(connect(mapStateToProps, null)(ProjectModal));
