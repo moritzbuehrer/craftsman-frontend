@@ -35,8 +35,8 @@ class ProjectGeneralInfo extends React.Component {
                                     {this.props.customer.firstName}
                                 </Row>
                                 <Row>
-                                    {this.props.customer.addresses.find(address => address.type === 'MAIN').street + ' ' +
-                                    this.props.customer.addresses.find(address => address.type === 'MAIN').number}
+                                    {this.props.customer.address.street + ' ' +
+                                    this.props.customer.address.number}
                                 </Row>
                                 <Row>
                                     {this.props.customer.phone}

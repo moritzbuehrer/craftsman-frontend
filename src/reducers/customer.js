@@ -7,7 +7,7 @@ const initialState = {
         firstName: "",
         phone: "",
         email: "",
-        addresses: [
+        address: 
             {
                 id: "",
                 type: "MAIN",
@@ -17,7 +17,7 @@ const initialState = {
                 city: "",
                 country: ""
             }
-        ]
+        
     },
     customers: [],
     showNewCustomerModal: false

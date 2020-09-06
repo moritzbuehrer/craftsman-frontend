@@ -58,6 +58,7 @@ const data = [
 
 class Customer extends React.Component {
 
+
     componentDidMount() {
         this.props.dispatch(getCustomer(this.props.match.params.id));
     }

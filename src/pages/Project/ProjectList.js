@@ -1,8 +1,8 @@
 import React from 'react';
-import { Table, Button, PageHeader } from 'antd';
+import { Table, Button, PageHeader, Tag } from 'antd';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { toggleShowNewProjectModal } from '../../actions/project';
+import { toggleShowNewProjectModal, getAllProjects } from '../../actions/project';
 import ProjectModal from '../../components/ProjectModal/ProjectModal';
 
 const columns = [
@@ -31,13 +31,18 @@ const columns = [
         title: 'Status',
         dataIndex: 'status',
         key: 'status',
+        render: (text) => <Tag color="blue">{text}</Tag>
     }
 ];
 
 class ProjectList extends React.Component {
 
+    componentDidMount() {
+        this.props.dispatch(getAllProjects());
+    }
+
     onNewProject = () => {
-        this.props.dispatch(toggleShowNewProjectModal())
+        this.props.dispatch(toggleShowNewProjectModal());
     }
 
     render() {

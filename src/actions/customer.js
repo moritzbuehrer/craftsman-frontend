@@ -32,15 +32,15 @@ export const postCustomer = (formCustomer, history) => {
             "firstName": formCustomer.firstName,
             "phone": formCustomer.phone,
             "email": formCustomer.mail,
-            "addresses": [
-                {
-                    "type": "MAIN",
-                    "street": formCustomer.street,
-                    "number": formCustomer.number,
-                    "city": formCustomer.city,
-                    "country": formCustomer.country
-                }
-            ]
+            "address": {
+                "type": "MAIN",
+                "street": formCustomer.street,
+                "number": formCustomer.number,
+                "postcode": formCustomer.postcode,
+                "city": formCustomer.city,
+                "country": formCustomer.country
+            }
+
         }
 
         axios.post('http://localhost:8080/customer', customer)
@@ -50,7 +50,7 @@ export const postCustomer = (formCustomer, history) => {
                 message.success('Neuer Kunde erfolgreich angelegt');
             })
             .catch(error => {
-                message.error('Fehler beim Anlegen eines neuen Projekts');
+                message.error('Fehler beim Anlegen eines neuen Kunden');
                 dispatch(postCustomerError(error))
             })
     }

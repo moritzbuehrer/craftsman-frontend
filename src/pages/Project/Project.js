@@ -8,7 +8,7 @@ import ProjectGeneralInfo from '../../components/ProjectGeneralInfo';
 import ProjectImages from '../../components/ProjectImages';
 import TimeTrackModal from '../../components/TimeTrackModal/TimeTrackModal';
 
-import { toggleShowTimeTrackModal } from './../../actions/project';
+import { toggleShowTimeTrackModal, getProject } from './../../actions/project';
 
 const { TextArea } = Input;
 const { TabPane } = Tabs;
@@ -63,15 +63,8 @@ const columnsResponsibleEmpolyees = [
 
 class Project extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            contactPerson: ""
-        }
-    }
-
     componentDidMount() {
-        let projectId = this.props.match.params.id;
+        this.props.dispatch(getProject(this.props.match.params.id))
     };
 
     showModal = () => {
@@ -88,13 +81,6 @@ class Project extends React.Component {
         return aggregatedWorkingTimes;
     };
 
-    onInputChange(e) {
-        console.log(this.state);
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
-
     render() {
 
         return (
@@ -103,7 +89,7 @@ class Project extends React.Component {
                 <PageHeader
                     onBack={() => window.history.back()}
                     title={this.props.currentProject.name}
-                    tags={<Tag color="blue">In Progress</Tag>}
+                    tags={<Tag color="blue">{this.props.currentProject.status}</Tag>}
                     subTitle={this.props.match.params.id}
                     extra={[
                         <Button type="primary" onClick={() => this.showModal()}>
@@ -123,16 +109,16 @@ class Project extends React.Component {
                         <Col span={16}>
                             <Descriptions size="small" column={3}>
                                 <Descriptions.Item label="Kontaktperson">
-                                        {this.props.currentProject.contactPerson.name}
+                                    {/* {this.props.currentProject.contactPerson.name} */}
                                 </Descriptions.Item>
                                 <Descriptions.Item label="Start Datum">
-                                    {this.props.currentProject.startDate}
+                                    {/* {this.props.currentProject.startDate} */}
                                 </Descriptions.Item>
                                 <Descriptions.Item label="Geplantes End Datum">
-                                    {this.props.currentProject.plannedEndDate}
-                                    </Descriptions.Item>
+                                    {/* {this.props.currentProject.plannedEndDate} */}
+                                </Descriptions.Item>
                                 <Descriptions.Item label="Telefonnummer">
-                                    {this.props.currentProject.contactPerson.phone}
+                                    {/* {this.props.currentProject.contactPerson.phone} */}
                                 </Descriptions.Item>
                             </Descriptions>
                         </Col>
@@ -144,7 +130,7 @@ class Project extends React.Component {
 
                 <Tabs defaultActiveKey="1">
                     <TabPane tab="Allgemeine Informationen" key="1">
-                        <ProjectGeneralInfo />
+                        {/* <ProjectGeneralInfo /> */}
                     </TabPane>
                     <TabPane tab="Verantwortliche Mitarbeiter" key="2">
                         <Table columns={columnsResponsibleEmpolyees} dataSource={null} />

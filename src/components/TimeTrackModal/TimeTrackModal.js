@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Button, Form, AutoComplete, Input, InputNumber } from 'antd';
 import { connect } from 'react-redux';
-import { toggleShowTimeTrackModal, setWorkingTime, resetProjectMessage } from '../../actions/project';
+import { toggleShowTimeTrackModal, setWorkingTime } from '../../actions/project';
 
 
 const options = [
@@ -30,7 +30,6 @@ class TimeTrackModal extends React.Component {
         }
         this.props.dispatch(setWorkingTime(timeTrack));
         this.props.dispatch(toggleShowTimeTrackModal());
-        this.props.dispatch(resetProjectMessage());
     };
 
     handleCancel = e => {
