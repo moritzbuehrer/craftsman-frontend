@@ -8,7 +8,7 @@ COPY . /app/
 RUN npm run build
 
 # Stage 1 "run with nginx"
-FROM node:alpine 
+FROM nginx:alpine 
 COPY --from=build /app/build /usr/share/nginx.html
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx/nginc.conf /etc/nginx/conf.d
