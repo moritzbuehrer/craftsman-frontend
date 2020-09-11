@@ -1,7 +1,8 @@
 import React from 'react';
 import { Modal, Button, Form, AutoComplete, Input, InputNumber } from 'antd';
 import { connect } from 'react-redux';
-import { toggleShowTimeTrackModal, setWorkingTime } from '../../actions/project';
+import { toggleShowTimeTrackModal } from '../../actions/project';
+import { postTimeTrack } from '../../actions/timeTrack';
 
 
 const options = [
@@ -22,14 +23,7 @@ const tailLayout = {
 class TimeTrackModal extends React.Component {
 
     handleOk = formValues => {
-        var timeTrack = {
-            id: "",
-            employee: formValues.employee,
-            workingTime: formValues.Duration,
-            note: formValues.note
-        }
-        this.props.dispatch(setWorkingTime(timeTrack));
-        this.props.dispatch(toggleShowTimeTrackModal());
+        this.props.dispatch(postTimeTrack(formValues))
     };
 
     handleCancel = e => {
@@ -53,8 +47,8 @@ class TimeTrackModal extends React.Component {
                     preserve={false}
                 >
                     <Form.Item
-                        label="Employee"
-                        name="employee"
+                        label="Mitarbeiter Id"
+                        name="employeeId"
                         rules={[{ required: true, message: 'Bitte Mitarbeiter angeben' }]}
                     >
                         <AutoComplete
@@ -68,7 +62,7 @@ class TimeTrackModal extends React.Component {
 
                     <Form.Item
                         label="Duration"
-                        name="Duration"
+                        name="duration"
                         rules={[{ required: true, message: 'Please set Working Time duration' }, { type: 'number' }]}
                     >
                         <InputNumber min={0} />

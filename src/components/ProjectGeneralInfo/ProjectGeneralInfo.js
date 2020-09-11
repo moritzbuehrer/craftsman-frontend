@@ -13,11 +13,12 @@ class ProjectGeneralInfo extends React.Component {
             <div >
                 <div>
                     <PageHeader
-                        title={<Title level={2}> {this.props.currentProject.name}</Title>}
+                        title={<Title level={4}> {this.props.currentProject.name}</Title>}
                         extra={[<Button key="1">Operation</Button>]}
+                        style={{padding: "5px"}}
                     />
                 </div>
-                <div style={{ height: '300px' }}>
+                <div style={{ height: '150px', padding: "0px 0px 0px 30px" }}>
                     <Row>
                         <Col span={4}>
                             <Row>
@@ -57,7 +58,7 @@ class ProjectGeneralInfo extends React.Component {
                 </div>
 
                 <Divider orientation="left">Adresse</Divider>
-                <div style={{ height: '200px' }}>
+                <div style={{ height: '200px', padding: "0px 0px 0px 30px" }}>
                     <div style={{ float: 'left', width: '50%', height: '100%' }}>
                         <Row>
                             <Col span={4}>
@@ -77,7 +78,7 @@ class ProjectGeneralInfo extends React.Component {
                             </Col>
                             <Col span="20">
                                 <Row>
-                                    {this.props.currentProject.address.street}
+                                    {this.props.currentProject.address.street + ' ' + this.props.currentProject.address.number}
                                 </Row>
                                 <Row>
                                     {this.props.currentProject.address.postcode}

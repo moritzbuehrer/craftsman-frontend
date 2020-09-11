@@ -1,4 +1,4 @@
-import { SET_PROJECT_WORKING_TIME, POST_PROJECT_SUCCESS } from "../constants/actionTypes";
+import { POST_PROJECT_SUCCESS, POST_TIME_TRACK_SUCCESS, GET_TIME_TRACKS_BY_PROJECT_SUCCESS } from "../constants/actionTypes";
 import { TOGGLE_SHOW_TIME_TRACK_MODAL, TOGGLE_SHOW_NEW_PROJECT_MODAL, POST_PROJECT_ERROR, GET_ALL_PROJECTS_SUCCESS, GET_ALL_PROJECTS_ERROR, GET_PROJECT_ERROR, GET_PROJECT_SUCCESS } from './../constants/actionTypes';
 
 const initialState = {
@@ -77,17 +77,31 @@ function project(state = initialState, action) {
                 currentProject: action.project,
                 showNewProjectModal: false
             }
-
-
-
-        case SET_PROJECT_WORKING_TIME:
+        case POST_TIME_TRACK_SUCCESS:
             return {
                 ...state,
                 currentProject: {
                     ...state.currentProject,
-                    timeTracks: state.currentProject.timeTracks.concat(action.workingTime)
+                    timeTracks: [...state.currentProject.timeTracks, action.timeTrack]
                 },
-                messcustomer: 'Arbeitszeit erfolgreich erfasst'
+                // projects: state.projects.map(project => {
+                //     if (project.id === action.timeTrack.projectId) {
+                //         return {
+                //             ...project,
+                //             timeTracks: [...project.timeTracks, action.timeTrack]
+                //         }
+                //     }
+                //     return project;
+                // }),
+                showTimeTrackModal: false
+            }
+        case GET_TIME_TRACKS_BY_PROJECT_SUCCESS:
+            return {
+                ...state,
+                currentProject: {
+                    ...state.currentProject,
+                    timeTracks: action.timeTracks
+                }
             }
         default:
             return state;

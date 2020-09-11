@@ -19,6 +19,7 @@ import CustomerList from './pages/Customer/CustomerList';
 import 'antd/dist/antd.css';
 import './App.css';
 import { connect } from 'react-redux';
+import EmployeeList from './pages/Employee/EmployeeList';
 
 
 
@@ -50,6 +51,8 @@ class App extends React.Component {
                 <Route exact path="/customer/:id" component={Customer} />
                 <Route exact path="/project" component={ProjectList} />
                 <Route exact path="/project/:id" component={Project} />
+                <Route exact path="/employee" component={EmployeeList} />
+                {/* <Route exact path="/project/:id" component={Employee} /> */}
               </Switch>
             </Content>
 

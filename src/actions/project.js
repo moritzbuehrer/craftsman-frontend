@@ -1,9 +1,18 @@
 import axios from 'axios';
 
-import { SET_PROJECT_WORKING_TIME, POST_PROJECT_SUCCESS } from "../constants/actionTypes";
-import { TOGGLE_SHOW_TIME_TRACK_MODAL, TOGGLE_SHOW_NEW_PROJECT_MODAL, POST_PROJECT_ERROR, GET_ALL_PROJECTS_SUCCESS, GET_ALL_PROJECTS_ERROR, GET_PROJECT_SUCCESS, GET_PROJECT_ERROR } from './../constants/actionTypes';
+import {
+    TOGGLE_SHOW_TIME_TRACK_MODAL,
+    TOGGLE_SHOW_NEW_PROJECT_MODAL,
+    POST_PROJECT_ERROR,
+    GET_ALL_PROJECTS_SUCCESS,
+    GET_ALL_PROJECTS_ERROR,
+    GET_PROJECT_SUCCESS,
+    GET_PROJECT_ERROR,
+    POST_PROJECT_SUCCESS
+} from './../constants/actionTypes';
 import { startLoading } from './general';
 import { message } from 'antd';
+import { getTimeTracksByProject } from './timeTrack';
 
 export function toggleShowTimeTrackModal() {
     return {
@@ -36,12 +45,15 @@ export const postProject = (formProject, history) => {
     return (dispatch) => {
         dispatch(startLoading());
 
+        var custId = formProject.customerId.replace(/(^\d+)(.+$)/i, '$1');
         var project = {
             externalId: "",
             name: formProject.name,
             description: "",
             status: "Erstellt",
-            customer: {},
+            customer: {
+                id: custId
+            },
             timeTracks: [],
             address: {
                 type: "MAIN",
@@ -116,6 +128,7 @@ export const getProject = (projectId) => {
         axios.get('http://localhost:8080/project/' + projectId)
             .then(res => {
                 dispatch(getProjectSuccess(res.data))
+                dispatch(getTimeTracksByProject(projectId))
             })
             .catch(error => {
                 dispatch(getProjectError(error))
@@ -124,16 +137,3 @@ export const getProject = (projectId) => {
     }
 }
 
-
-
-
-
-
-
-// Depricated --> No connetion to backend
-export function setWorkingTime(workingTime) {
-    return {
-        type: SET_PROJECT_WORKING_TIME,
-        workingTime: workingTime
-    }
-};

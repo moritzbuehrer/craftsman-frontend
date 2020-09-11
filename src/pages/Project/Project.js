@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs, Input, Table } from 'antd';
+import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs, Input, Table, Typography } from 'antd';
 import { connect } from 'react-redux';
 import projectImage from '../../images/project_image.jpg';
 
@@ -12,6 +12,7 @@ import { toggleShowTimeTrackModal, getProject } from './../../actions/project';
 
 const { TextArea } = Input;
 const { TabPane } = Tabs;
+const { Title } = Typography;
 
 const columnsTimeTrack = [
     {
@@ -22,8 +23,8 @@ const columnsTimeTrack = [
     },
     {
         title: 'Arbeitszeit',
-        dataIndex: 'workingTime',
-        key: 'workingTime',
+        dataIndex: 'duration',
+        key: 'duration',
         render: text => <div>{text} h</div>,
     },
     {
@@ -74,11 +75,14 @@ class Project extends React.Component {
     aggregateTotalWorkingHours = () => {
         let timeTracks = this.props.currentProject.timeTracks;
 
-        var aggregatedWorkingTimes = 0;
-        for (let timeTrack of timeTracks) {
-            aggregatedWorkingTimes += timeTrack.workingTime;
+        if (Array.isArray(timeTracks) && timeTracks.length) {
+            var aggregatedWorkingTimes = 0;
+            for (let timeTrack of timeTracks) {
+                aggregatedWorkingTimes += timeTrack.duration;
+            }
+            return aggregatedWorkingTimes;
         }
-        return aggregatedWorkingTimes;
+
     };
 
     render() {
@@ -88,7 +92,7 @@ class Project extends React.Component {
                 <TimeTrackModal />
                 <PageHeader
                     onBack={() => window.history.back()}
-                    title={this.props.currentProject.name}
+                    title={<Title level={2}> {this.props.currentProject.name}</Title>}
                     tags={<Tag color="blue">{this.props.currentProject.status}</Tag>}
                     subTitle={this.props.match.params.id}
                     extra={[
@@ -106,7 +110,7 @@ class Project extends React.Component {
                         <Col span={4}>
                             <img src={projectImage} className="project-image" alt="" />
                         </Col>
-                        <Col span={16}>
+                        <Col span={16} style={{ padding: "5px 15px" }}>
                             <Descriptions size="small" column={3}>
                                 <Descriptions.Item label="Kontaktperson">
                                     {/* {this.props.currentProject.contactPerson.name} */}
@@ -123,7 +127,7 @@ class Project extends React.Component {
                             </Descriptions>
                         </Col>
                         <Col span={4}>
-                            <Statistic title="Gesamte Arbeitszeit" suffix="h" value={this.aggregateTotalWorkingHours()} />
+                            {<Statistic title="Gesamte Arbeitszeit" suffix="h" value={this.aggregateTotalWorkingHours()} />}
                         </Col>
                     </Row>
                 </PageHeader>

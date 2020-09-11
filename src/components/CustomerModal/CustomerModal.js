@@ -31,7 +31,7 @@ class CustomerModal extends React.Component {
                 onCancel={this.handleCancel}
                 footer={null}
                 destroyOnClose={true}
-                width="22%"
+                width="50%"
             >
                 <Form
                     {...layout}
