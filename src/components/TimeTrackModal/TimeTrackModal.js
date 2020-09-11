@@ -5,12 +5,6 @@ import { toggleShowTimeTrackModal } from '../../actions/project';
 import { postTimeTrack } from '../../actions/timeTrack';
 
 
-const options = [
-    { value: 'John Doe' },
-    { value: 'Max Mustermann' },
-    { value: 'Test User1' },
-];
-
 const layout = {
     labelCol: { span: 6 },
     wrapperCol: { span: 18 },
@@ -52,7 +46,7 @@ class TimeTrackModal extends React.Component {
                         rules={[{ required: true, message: 'Bitte Mitarbeiter angeben' }]}
                     >
                         <AutoComplete
-                            options={options}
+                            options={this.props.employees}
                             placeholder="Nach Mitarbeitern suchen..."
                             filterOption={(inputValue, option) =>
                                 option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
@@ -89,7 +83,12 @@ class TimeTrackModal extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    showModal: state.project.showTimeTrackModal
+    showModal: state.project.showTimeTrackModal,
+    employees: state.employee.employees.map(employee => {
+        return {
+            "value": employee.id + " | " + employee.name + ", " + employee.firstName
+        }
+    })
 });
 
 export default connect(mapStateToProps, null)(TimeTrackModal);

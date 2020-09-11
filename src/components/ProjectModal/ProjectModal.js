@@ -104,8 +104,7 @@ const mapStateToProps = (state) => ({
     showModal: state.project.showNewProjectModal,
     customers: state.customer.customers.map(customer => {
         return {
-            "value": customer.id + " | " + customer.name + " " + customer.firstName,
-            "customer": customer
+            "value": customer.id + " | " + customer.name + ", " + customer.firstName
         }
     })
 });
