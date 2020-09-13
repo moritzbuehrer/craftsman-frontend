@@ -27,7 +27,7 @@ export function getTimeTracksByProjectError(error) {
 export const getTimeTracksByProject = (projectId) => {
     return (dispatch) => {
 
-        axios.get('http://localhost:8080/project/' + projectId + '/timeTrack')
+        axios.get(process.env.REACT_APP_DOMAIN + '/project/' + projectId + '/timeTrack')
             .then(res => {
                 dispatch(getTimeTracksByProjectSuccess(res.data))
             })
@@ -65,7 +65,7 @@ export const postTimeTrack = (formTimeTrack) => {
         }
 
         if (getState().project.currentProject.id !== null) {
-            axios.post('http://localhost:8080/project/' + getState().project.currentProject.id + '/timeTrack', timeTrack)
+            axios.post(process.env.REACT_APP_DOMAIN + '/project/' + getState().project.currentProject.id + '/timeTrack', timeTrack)
                 .then(res => {
                     dispatch(postTimeTrackSuccess(res.data))
                 })

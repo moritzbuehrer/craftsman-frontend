@@ -43,7 +43,7 @@ export const postCustomer = (formCustomer, history) => {
 
         }
 
-        axios.post('http://localhost:8080/customer', customer)
+        axios.post(process.env.REACT_APP_DOMAIN + '/customer', customer)
             .then(res => {
                 dispatch(postCustomerSuccess(res.data));
                 history.push('customer/' + res.data.id);
@@ -75,7 +75,7 @@ export const getAllCustomers = () => {
 
         dispatch(startLoading());
 
-        axios.get('http://localhost:8080/customer')
+        axios.get(process.env.REACT_APP_DOMAIN + '/customer')
             .then(res => {
 
                 var customers = [];
@@ -118,7 +118,7 @@ export const getCustomer = (customerId) => {
 
         dispatch(startLoading());
 
-        axios.get('http://localhost:8080/customer/' + customerId)
+        axios.get(process.env.REACT_APP_DOMAIN + '/customer/' + customerId)
             .then(res => {
 
                 dispatch(getCustomerSuccess(res.data));

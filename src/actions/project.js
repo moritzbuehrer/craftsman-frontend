@@ -65,7 +65,7 @@ export const postProject = (formProject, history) => {
             },
         }
 
-        axios.post('http://localhost:8080/project', project)
+        axios.post(process.env.REACT_APP_DOMAIN + '/project', project)
             .then(res => {
                 dispatch(postProjectSuccess(res.data))
                 history.push('project/' + res.data.id);
@@ -96,7 +96,7 @@ export const getAllProjects = () => {
     return (dispatch) => {
         dispatch(startLoading());
 
-        axios.get('http://localhost:8080/project')
+        axios.get(process.env.REACT_APP_DOMAIN + '/project')
             .then(res => {
                 dispatch(getAllProjectsSuccess(res.data))
             })
@@ -125,7 +125,7 @@ export const getProject = (projectId) => {
     return (dispatch) => {
         dispatch(startLoading());
 
-        axios.get('http://localhost:8080/project/' + projectId)
+        axios.get(process.env.REACT_APP_DOMAIN + '/project/' + projectId)
             .then(res => {
                 dispatch(getProjectSuccess(res.data))
                 dispatch(getTimeTracksByProject(projectId))

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
-import GoogleMapContainer from '../GoogleMapContainer/GoogleMapContainer';
+import Map from './../Map/Map';
 
 class ProjectGeneralInfo extends React.Component {
 
@@ -49,7 +49,7 @@ class ProjectGeneralInfo extends React.Component {
                     </Col>
                     <Col span="8">
                         <div style={{ height: '400px' }}>
-                            <GoogleMapContainer />
+                            <Map/>
                         </div>
                     </Col>
                 </Row>

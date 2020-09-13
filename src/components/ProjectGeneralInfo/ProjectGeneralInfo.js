@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Typography, Row, Col, Divider, Button, PageHeader } from 'antd';
-import GoogleMapContainer from '../GoogleMapContainer/GoogleMapContainer';
+import Map from './../Map/Map';
 
 const { Title, Text } = Typography;
-
 
 class ProjectGeneralInfo extends React.Component {
 
@@ -93,7 +92,7 @@ class ProjectGeneralInfo extends React.Component {
                         </Row>
                     </div>
                     <div style={{ float: 'left', width: '50%', height: '100%' }}>
-                        <GoogleMapContainer />
+                        <Map/>
                     </div>
                 </div>
 

@@ -1,14 +1,15 @@
 import React from 'react';
-import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs, Input, Table, Typography } from 'antd';
 import { connect } from 'react-redux';
-import projectImage from '../../images/project_image.jpg';
+import { Row, Col, PageHeader, Button, Statistic, Tag, Descriptions, Tabs, Input, Table, Typography } from 'antd';
 
-import './Project.css'
 import ProjectGeneralInfo from '../../components/ProjectGeneralInfo/ProjectGeneralInfo';
 import ProjectImages from '../../components/ProjectImages';
 import TimeTrackModal from '../../components/TimeTrackModal/TimeTrackModal';
 
 import { toggleShowTimeTrackModal, getProject } from './../../actions/project';
+
+import projectImage from '../../images/project_image.jpg';
+import './Project.css'
 
 const { TextArea } = Input;
 const { TabPane } = Tabs;

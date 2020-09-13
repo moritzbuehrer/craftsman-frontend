@@ -46,7 +46,7 @@ export const postEmployee = (formEmployee, history) => {
 
         }
 
-        axios.post('http://localhost:8080/employee', employee)
+        axios.post(process.env.REACT_APP_DOMAIN +'/employee', employee)
             .then(res => {
                 dispatch(postEmployeeSuccess(res.data));
                 //history.push('employee/' + res.data.id);
@@ -77,7 +77,7 @@ export const getAllEmployees = () => {
     return (dispatch) => {
         dispatch(startLoading());
 
-        axios.get('http://localhost:8080/employee')
+        axios.get(process.env.REACT_APP_DOMAIN +'/employee')
             .then(res => {
                 dispatch(getAllEmployeesSuccess(res.data));
             })
