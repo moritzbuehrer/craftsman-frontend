@@ -10,6 +10,7 @@ import { toggleShowTimeTrackModal, getProject } from './../../actions/project';
 
 import projectImage from '../../images/project_image.jpg';
 import './Project.css'
+import { Link } from 'react-router-dom';
 
 const { TextArea } = Input;
 const { TabPane } = Tabs;
@@ -20,7 +21,7 @@ const columnsTimeTrack = [
         title: 'Mitarbeiter',
         dataIndex: 'employee',
         key: 'employee',
-        render: text => <a>{text}</a>,
+        render: (text, record, index) => <Link to={`/employee/${record.id}`}>{text.firstName + " " + text.name}</Link>
     },
     {
         title: 'Arbeitszeit',

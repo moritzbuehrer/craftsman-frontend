@@ -9,7 +9,7 @@ import {
 
 
 import SiderMenu from './components/SiderMenu';
-import AppHeader from './components/AppHeader';
+import AppHeader from './components/AppHeader/AppHeader';
 import Customer from './pages/Customer/Customer';
 import Project from './pages/Project/Project';
 import ProjectList from './pages/Project/ProjectList';
@@ -20,6 +20,7 @@ import 'antd/dist/antd.css';
 import './App.css';
 import { connect } from 'react-redux';
 import EmployeeList from './pages/Employee/EmployeeList';
+import Login from './pages/Login/Login';
 
 
 
@@ -46,6 +47,7 @@ class App extends React.Component {
             <Content className="content">
               {this.props.loading ? <Spin size="large" className="spinner" /> : null}
               <Switch>
+                {/* <Route exact path="/login" component={Login} /> */}
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/customer" component={CustomerList} />
                 <Route exact path="/customer/:id" component={Customer} />

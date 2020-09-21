@@ -57,11 +57,16 @@ export const postTimeTrack = (formTimeTrack) => {
     return (dispatch, getState) => {
         dispatch(startLoading());
 
+        var employeeId = formTimeTrack.employeeId.replace(/(^\d+)(.+$)/i, '$1');
         var timeTrack = {
             duration: formTimeTrack.duration,
             note: formTimeTrack.note,
             date: null,
-            employeeId: null
+            employee: {
+                id: employeeId
+            }
+
+
         }
 
         if (getState().project.currentProject.id !== null) {
